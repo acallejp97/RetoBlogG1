@@ -1,7 +1,6 @@
 <?php
 	class Conexion
 	{
-		<?php
 			private $db;
 			private $servidor;
 			private $username;

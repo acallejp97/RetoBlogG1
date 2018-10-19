@@ -20,7 +20,7 @@ function validarCreacion(correoIntroducido, arrayCorreos) {
 //Validacion contraseña
 function validarPasswd(passwd) {
   var expReg = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
-  if (regex.test(passwd)) {
+  if (expReg.test(passwd)) {
     return true;
   } else {
     alert(
@@ -32,6 +32,30 @@ function validarPasswd(passwd) {
 
 //todo añadirlo al onclick
 function onClickPulsado(usuario) {
-  if (validarPasswd(usuario.passwd) || validarCorreo(usuario.correo) || validarCreacion(usuario.correo)) return true;
+  if (
+    validarPasswd(usuario.passwd) ||
+    validarCorreo(usuario.correo) ||
+    validarCreacion(usuario.correo)
+  )
+    return true;
   else return false;
+}
+
+//Creamos el objeto usuario
+var usuario = {
+  id: "",
+  nombre: "",
+  passwd: "",
+  email: "",
+  permisos: ""
+};
+
+var usuario = new Object();
+usuario.id = "";
+usuario.nombre = "";
+usuario.passwd = "";
+usuario.email = "";
+usuario.persmisos = "";
+usuario.getID=function(){
+  return this.id;
 }

@@ -1,15 +1,15 @@
 <?php
+	include "../Controlador/usuario.php";
+	include "../Conexion/Conexion.php";
 	class Usuario implements iUsuario
 	{
-		include "../Controlador/usuario.php";
-		include "../Conexion/Conexion.php";
-		$usuario;
-		$sqlALL="SELECT * FROM usuarios";
-		$sqlByEMAIL="SELECT * FROM usuarios WHERE email=?";
-		$sqlByID="SELECT permisos FROM usuarios WHERE id=?";
-		$sqlUPDATE="UPDATE usuarios SET nombre=?, email=? WHERE id=?";
-		$sqlINSERT="INSERT INTO usuarios (nombre,) VALUES (?,?,?,?)";
-		$sqlDELETE=" DELETE FROM usuarios WHERE id=?";
+		private $usuario;
+		private $sqlALL="SELECT * FROM usuarios";
+		private $sqlByEMAIL="SELECT * FROM usuarios WHERE email=?";
+		private $sqlByID="SELECT permisos FROM usuarios WHERE id=?";
+		private $sqlUPDATE="UPDATE usuarios SET nombre=?, email=? WHERE id=?";
+		private $sqlINSERT="INSERT INTO usuarios (nombre,) VALUES (?,?,?,?)";
+		private $sqlDELETE=" DELETE FROM usuarios WHERE id=?";
 		//Devuelve todos los usuarios de la tabla
 		public function selectALL()	
 		{

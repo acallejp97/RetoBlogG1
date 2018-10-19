@@ -87,9 +87,9 @@
 			return $this->idCategoria;
 		}
 
-		public function setPublicado()
+		public function getPublicado()
 		{
-			$this->publicado;
+			return $this->publicado;
 		}
 	}
 ?>
