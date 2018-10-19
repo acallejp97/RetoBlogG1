@@ -1,7 +1,7 @@
 //Funcion que detecta si se ha escrito algo dentro de un input
 function validacionTexto(texto) {
   if (texto.value == "") {
-    alert("El "+texto.name+" no puede estar vacio");
+    alert("El " + texto.name + " no puede estar vacio");
     return false;
   } else return true;
 }
