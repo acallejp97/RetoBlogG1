@@ -8,25 +8,17 @@
 	        private $conn;
 		private static $instance=NULL;
 		
-		private function __construct()
-                {
-                    
-                }
+		private function __construct(){}
  
 		private function __clone(){}
 		
 		public static function getInstance(){
 			if (!isset(self::$instance)) {
-			    $pdo_options[PDO::ATTR_ERRMODE]=PDO::ERRMODE_EXCEPTION;
-                self::$instance= new PDO("mysql:host=127.0.0.1;dbname="."g1blog","root","",$pdo_options);
+				$pdo_options[PDO::ATTR_ERRMODE]=PDO::ERRMODE_EXCEPTION;
+				self::$instance= new PDO('mysql:host=localhost;dbname=mvc','root','',$pdo_options);
 			}
 			return self::$instance;
-                }
-                
-                public static function cerrar()
-                {
-                    $instance=null;
-                }
+		}
                 /*function __construct() 
                 {
                      $this->db = "g1blog";
