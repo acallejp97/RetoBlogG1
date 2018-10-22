@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="title" content="Ultimatix">
+	<meta name="description" content="Grupo 1 de DAW 2.">
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+    <title>Ultimatix</title>
+    <link rel="stylesheet" href="fonts/styles.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<a href="#menu" class="up-button bounceIn"><img src="img/menu-button.png"></a>
+	<img src="img/ultimatix-logo.png" class="logo bounceIn">
+	<section id="menu">
+		<ul class="menu">
+			<li><a href="index.html">Introducción</a></li>
+			<li><a href="instalacion-proxmox.html">Instalación Proxmox</a></li>
+			<li><a href="instalacion-contenedores.html">Instalación Contenedores</a></li>
+			<li><a href="instalacion-LAMP.html">Instalación LAMP</a></li>
+			<li><a href="instalacion-GIT.html">Intalación GIT</a></li>
+		</ul>
+	</section>
+	<section>
+		<h1>Instalación LAMP:</h1>
+			<p>Para instalar LAMP, empezaremos con Apache, luego con MySQL y por ultimo instalaremos PHP.</p>
+	</section>
+
+	<section>
+		<h1>Apache:</h1>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/lamp1.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Introducimos la siguientes instrucción en el terminal para poder instalar Apache:
+				<b>sudo apt install apache2</b></p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/lamp2.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Podemos pulsar la techa “Y” y presionar “Enter” o directamente pulsar “Enter” para aceptar y continuar la instalación.</p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="left">
+			<div class="content-wrapper">
+			<img src="img/lamp3.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Si tenemos habilitado el cortafuegos (fireware) del servidor, el siguiente paso es confirmar si permite el trafico HTTP y HTTPS:
+
+				<b>Sudo uwf app list</b></p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/lamp4.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Solicitamos información del perfil de “Apache Full” para verificar que puertos están habilitados:
+				<b>sudo ufw app into “Apache Full”</b>.
+				Para permitir el trafico HTTP y HTTPS deberemos ejecutar la siguiente instrucción:
+				ufw allow in “Apache Full”</p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/lamp5.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Una vez que hayamos configurado todo, ya podremos acceder a nuestro servidor desde un navegador externo introduciendo la IP del servidor.</p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/lamp6.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Con la siguiente instrucción podremos ver la ip de nuestro servidor:
+				<b>ip addr show eth0</b><</p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<h1>MySQL:</h1>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/lamp7.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Introduciremos en el terminal la siguiente instrucción para instalar MySQL:
+				<b>pt install mysql server</b>
+
+				El siguiente paso es configurar la seguridad en MySQL. Para ello introducimos la siguiente instrucción y elegimos una nueva contraseña para el acceso:
+				<b>mysql_secure_installation</b></p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<h1>PHP:</h1>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/lamp8.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Para instalar PHP en nuestro servidor deberemos introducir en el terminal la siguiente instrucción:
+				<b>sudo apt install php libapache2-mod-php php-mysql</b></p>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

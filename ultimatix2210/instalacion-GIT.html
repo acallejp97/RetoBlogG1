@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="title" content="Ultimatix">
+	<meta name="description" content="Grupo 1 de DAW 2.">
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+    <title>Ultimatix</title>
+    <link rel="stylesheet" href="fonts/styles.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<a href="#menu" class="up-button bounceIn"><img src="img/menu-button.png"></a>
+	<img src="img/ultimatix-logo.png" class="logo bounceIn">
+	<section id="menu">
+		<ul class="menu">
+			<li><a href="index.html">Introducción</a></li>
+			<li><a href="instalacion-proxmox.html">Instalación Proxmox</a></li>
+			<li><a href="instalacion-contenedores.html">Instalación Contenedores</a></li>
+			<li><a href="instalacion-LAMP.html">Instalación LAMP</a></li>
+			<li><a href="instalacion-GIT.html">Intalación GIT</a></li>
+		</ul>
+	</section>
+	<section>
+		<h1>Instalación GIT:</h1>
+	</section>
+	<!--<section>
+		<video controls preload="none">
+   <source src="videos/github1.ogv" type="video/ogv">
+</video>
+	</section>
+	<section>
+		<video controls preload="none">
+   <source src="videos/github2.ogv" type="video/ogv">
+</video>
+	</section>-->
+
+	<section>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/git1.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Lo primero que debemos hacer antes de proceder a la instalación del GIT es crearnos una carpeta, nosotros nos lo creamos en la carpeta personal de nombre ProyectoProxmox.</p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/git2.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Una vez que ya lo tengamos creado ya podremos proceder a la instalación a través de la consola de comandos, lo abrimos y nos situamos en nuestra carpeta que en nuestro caso seria ProyectoProxmox e instalamos el GIT con el comando<b> sudo apt-get install git</b>.</p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="left">
+			<div class="content-wrapper">
+			<img src="img/git3.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Cuando ya lo tengamos instalado tenemos que configurar nuestro nombre de usuario y dirección de correo electrónico con el comando <b>git config –global user.email “ProyectoProxmoxg1@gmail.com”.</b></p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/git4.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Una vez instalado y configurado Git, Iniciamos y creamos nuestro primer repositorio para iniciar utilizamos el comando <b>git init</b> y para hacer el primer repositorio añadimos la primera copia con <b>git add ”</b>.</p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/git5.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Y lo consolidamos con el comando <b>git commit -m “primera consolidacion”</b>.
+					Para poder visualizar nuestro registro de consolidaciones usamos <b>git log</b> y para ver el estado de git por si tenemos que hacer un “add” o una consolidación nueva utilizamos el comando <b>git status.</b></p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/git6.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Ahora debemos proceder a darnos de alta en GIT HUB en la página GitHub.com . Despues de darnos de alta instalamos GitHub en la consola de comandos con <b>sudo apt-get install gith</b>.</p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/git7.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Vinculamos a nuestro git (local) el nuevo directorio de trabajo (repositorio creado en la cuenta de GitHub) con 
+				<b>git remote add origin HTTPS://github.com/ProyectoProxmoxG1/ProyectoProxmoxG1.git</b>.</p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="left">
+			<div class="content-wrapper">
+				<img src="img/git8.png">
+			</div>
+		</div>
+		<div class="right">
+			<div class="content-wrapper">
+				<p>Y por ultimo pasamos el proyecto de Git a GitHub con el comando <b>git push -u origin master</b>.</p>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

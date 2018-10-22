@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
     include_once 'Controlador/usuariosDTO.php';
    // include_once 'Conexion\Conexion.php';
 	class UsuarioDAO
@@ -8,6 +9,19 @@
 		private $sqlUPDATE="UPDATE usuarios SET nombre=?, email=? WHERE id=?";
 		private $sqlINSERT="INSERT INTO usuarios (nombre,password,email,permisos) VALUES (?,?,?,?)";  
 		private $sqlDELETE=" DELETE FROM usuarios WHERE id=? AND (id=? OR id=?)";
+=======
+	include "../Controlador/usuario.php";
+	include "../Conexion/Conexion.php";
+	class Usuario implements iUsuario
+	{
+		private $usuario;
+		private $sqlALL="SELECT * FROM usuarios";
+		private $sqlByEMAIL="SELECT * FROM usuarios WHERE email=?";
+		private $sqlByID="SELECT permisos FROM usuarios WHERE id=?";
+		private $sqlUPDATE="UPDATE usuarios SET nombre=?, email=? WHERE id=?";
+		private $sqlINSERT="INSERT INTO usuarios (nombre,) VALUES (?,?,?,?)";
+		private $sqlDELETE=" DELETE FROM usuarios WHERE id=?";
+>>>>>>> fa39edc896b34c5e043b7aa16c31b8b71818e960
 		//Devuelve todos los usuarios de la tabla
 		public function selectALL()	
 		{
