@@ -1,35 +1,21 @@
 <?php
-<<<<<<< HEAD
     include_once 'Controlador/usuariosDTO.php';
+    include_once 'Modelo/iUsuario.php';
    // include_once 'Conexion\Conexion.php';
-	class UsuarioDAO
+	class UsuarioDAO implements iUsuario
 	{		
 		private $sqlALL="SELECT * FROM usuarios";		
 		private $sqlByID="SELECT permisos FROM usuarios WHERE id=?";
 		private $sqlUPDATE="UPDATE usuarios SET nombre=?, email=? WHERE id=?";
 		private $sqlINSERT="INSERT INTO usuarios (nombre,password,email,permisos) VALUES (?,?,?,?)";  
 		private $sqlDELETE=" DELETE FROM usuarios WHERE id=? AND (id=? OR id=?)";
-=======
-	include "../Controlador/usuario.php";
-	include "../Conexion/Conexion.php";
-	class Usuario implements iUsuario
-	{
-		private $usuario;
-		private $sqlALL="SELECT * FROM usuarios";
-		private $sqlByEMAIL="SELECT * FROM usuarios WHERE email=?";
-		private $sqlByID="SELECT permisos FROM usuarios WHERE id=?";
-		private $sqlUPDATE="UPDATE usuarios SET nombre=?, email=? WHERE id=?";
-		private $sqlINSERT="INSERT INTO usuarios (nombre,) VALUES (?,?,?,?)";
-		private $sqlDELETE=" DELETE FROM usuarios WHERE id=?";
->>>>>>> fa39edc896b34c5e043b7aa16c31b8b71818e960
 		//Devuelve todos los usuarios de la tabla
 		public function selectALL()	
 		{
-                    $listaUsuario=[];   //array que coje el resultado de la query
-                    $temp=[]; //array en el que guardamos los objetos usuarios
+            $temp=[]; //array en el que guardamos los objetos usuarios
 			$db= Conexion::getInstance();
-			$listaUsuario=$db->query($this->sqlALL);
-			while ($usuarioTemp=$listaUsuario->fetch())
+			$listaUsuarios=$db->query($this->sqlALL);
+			while($usuarioTemp=$listaUsuarios->fetch())
 			{
 				$usuario= new usuariosDTO();
 				$usuario->setidUsuario($usuarioTemp["id"]);
@@ -37,7 +23,7 @@
 				$usuario->setPwd($usuarioTemp["password"]);
 				$usuario->setEmail($usuarioTemp["email"]);
 				$usuario->setPermisos($usuarioTemp["permisos"]);
-                                array_push($temp,$usuario);
+                array_push($temp,$usuario);
 			}
 			return $temp;
 		}
@@ -46,7 +32,7 @@
 		{
 			$sqlByEMAIL="SELECT * FROM usuarios WHERE email='".$email."'";
 			$db=Conexion::getInstance();
-                        $temp=[];
+            $temp=[];
 			//Utilizamos una consulta preparada
 			$listaUsuarios=$db->query($sqlByEMAIL);
 			while($usuarioTemp=$listaUsuarios->fetch())

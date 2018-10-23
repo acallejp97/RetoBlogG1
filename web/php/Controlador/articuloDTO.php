@@ -8,6 +8,7 @@
 		private $valoracion;    //La nota que le han puesto los demás usuarios.
 		private $idCategoria;	//Identificador de la clase a la que pertenece. Hay tres, Solo puede pertenecer a una
 		private $publicado;
+                private $titulo;
 		function __construct()
 		{
 			$this->idArticulo=0;
@@ -17,6 +18,7 @@
 			$this->valoracion=0;
 			$this->idCategoria=0;
 			$this->publicado=false;
+                        $this->titulo="No definido";
 		}
 
 		//Funciones para definir el valor de los atributos
@@ -91,5 +93,22 @@
 		{
 			return $this->publicado;
 		}
-	}
+	
+                function getTitulo() {
+                    return $this->titulo;
+                }
+
+                function setTitulo($titulo) {
+                    $this->titulo = $titulo;
+                }
+                
+                function toString()
+                {
+                    return "<p><br>Id: ".$this->idArticulo."<br>Fecha: ".$this->fecha."<br>Texto: ".$this->texto."</p>";
+                }
+
+
+                }
+        
+        
 ?>

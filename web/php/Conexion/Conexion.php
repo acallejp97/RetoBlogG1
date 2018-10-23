@@ -1,8 +1,7 @@
 <?php
 	class Conexion
 	{
-<<<<<<< HEAD
-		private $db="g1blog";
+		private $db="G1Reto";
 		private $servidor="mysql:host=127.0.0.1;dbname=";
 		private $username="root";
 		private $password="";
@@ -11,29 +10,16 @@
 		
 		private function __construct()
                 {
-                    
+                   
                 }
  
 		private function __clone(){}
 		
 		public static function getInstance(){
-			if (!isset(self::$instance)) {
-			    $pdo_options[PDO::ATTR_ERRMODE]=PDO::ERRMODE_EXCEPTION;
-                self::$instance= new PDO("mysql:host=127.0.0.1;dbname="."g1blog","root","",$pdo_options);
-=======
-			private $db;
-			private $servidor;
-			private $username;
-			private $password;
-			private $conn;
-
-			function __construct()
-			{
-				$db="G1Reto";
-			    $servidor="mysql:host=127.0.0.1;dbname=".$db;
-			    $username="root";
-			    $password="";
->>>>>>> fa39edc896b34c5e043b7aa16c31b8b71818e960
+			 if (!isset(self::$instance)) 
+                        {
+				$pdo_options[PDO::ATTR_ERRMODE]=PDO::ERRMODE_EXCEPTION;
+                                self::$instance= new PDO("mysql:host=127.0.0.1;dbname="."g1Reto","root","",$pdo_options);
 			}
 			return self::$instance;
                 }
