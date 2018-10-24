@@ -56,7 +56,7 @@ usuario.id = "";
 usuario.nombre = "";
 usuario.passwd = "";
 usuario.email = "";
-usuario.permisosgit = "";
+usuario.permisos = "";
 usuario.getID = function() {
   return this.id;
 };
@@ -72,3 +72,19 @@ usuario.getEmail = function() {
 usuario.getPermission = function() {
   return this.permisos;
 };
+
+var sentenciaRegistro =
+  "INSERT INTO usuarios(id, nombre, password, email, permisos)" +
+  "VALUES(?,?,?,?,?);";
+
+var sentenciaInicio =
+  "SELECT id, nombre, permisos from usuarios " +
+  "where nombre like usuario.nombre and password like usuario.passwd;";
+
+var sentenciaCrearPost =
+  "INSERT INTO articulos(fecha, texto, categoria, publicado)" +
+  "VALUES(?,?,?,?);";
+
+var sentenciaActualizarPost =
+  "UPDATE articulos" +
+  "SET titulo=?, texto=?, valoracion=?, categoria=?, publicado=? where id=?;";
