@@ -1,13 +1,8 @@
-/* colors: 
-Black=#000000 
-Light=rgba(226, 221, 217, 0.43)
-Darkgrey=#6B6B6B
-Orange=rgba(231, 165, 77, 0.6)
-Lightgrey=#9E9E9E */
+
 
 body {
-	background-color: rgba(226, 221, 217, 0.43);
-	color: rgba(231, 165, 77, 0.6);
+	background-color: rgba(204, 219, 220, 1);
+	color: rgba(0, 126, 167, 1);
 }
 
 .up-button {
@@ -57,7 +52,7 @@ img {
 
 .menu a {
 	display: inline-block;
-	background-color: rgba(231, 165, 77, 0.6);
+	background-color: rgba(0, 126, 167, 1);
 	color: #6B6B6B;
 	padding: 20px;
 	margin: 10px;
