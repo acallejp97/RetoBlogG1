@@ -1,7 +1,7 @@
 //Validacion de correo
 function validarCorreo(correo) {
   var expReg = /^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/;
-  if (expReg.test(correo.element[""])) return true;
+  if (expReg.test(correo.getElementById("email").value)) return true;
   else {
     alert("Por favor introduzca un correo en formato valido");
     return false;
@@ -12,7 +12,10 @@ function validarCorreo(correo) {
 function validarCreacion(correoIntroducido, arrayCorreos) {
   var existe = false;
   arrayCorreos.forEach(function(correo) {
-    if (correo.toUpperCase() == correoIntroducido.element[""].toUpperCase())
+    if (
+      correo.toUpperCase() ==
+      correoIntroducido.getElementById("email").value.toUpperCase()
+    )
       existe = true;
   });
   return existe;
@@ -21,7 +24,7 @@ function validarCreacion(correoIntroducido, arrayCorreos) {
 //Validacion contraseña
 function validarPasswd(passwd) {
   var expReg = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
-  if (expReg.test(passwd.element[""])) {
+  if (expReg.test(passwd.getElementById("password").value)) {
     return true;
   } else {
     alert(
@@ -29,6 +32,13 @@ function validarPasswd(passwd) {
     );
     return false;
   }
+}
+
+function validarPasswdIguales(passwd) {
+  var passwd1 = passwd.getElementById("password").value;
+  var passwd2 = passwd.getElementById("confirmarpassword").value;
+  if (passwd1 == passwd2) return true;
+  else return false;
 }
 
 //todo añadirlo al onclick

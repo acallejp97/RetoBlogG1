@@ -1,6 +1,6 @@
 //Funcion que detecta si se ha escrito algo dentro de un input
 function validacionTexto(texto) {
-  texto = texto.element[""];
+  texto = texto.getElementById("").value;
   if (texto.value == "") {
     alert("El " + texto.name + " no puede estar vacio");
     return false;
@@ -10,14 +10,14 @@ function validacionTexto(texto) {
 //Validamos si la fecha introducida es anterior al dia de hoy
 function validarFechaProgramada(fecha) {
   var fechaHoy = new Date();
-  if (fechaHoy <= fecha.element[""]) {
+  if (fechaHoy <= fecha.getElementById("").value) {
     alert("La fecha introducida no es valida");
     return false;
   } else return true;
 }
 
 function formatearFecha(fecha) {
-  var dividirFecha = fecha.element[""].split("/");
+  var dividirFecha = fecha.getElementById("").value.split("/");
   var fechaModificada =
     dividirFecha(2) + "/" + dividirFecha(1) + "/" + dividirFecha(0);
     return fechaModificada;
