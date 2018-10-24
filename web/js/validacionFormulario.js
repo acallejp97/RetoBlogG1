@@ -15,3 +15,10 @@ function validarFechaProgramada(fecha) {
     return false;
   } else return true;
 }
+
+function formatearFecha(fecha) {
+  var dividirFecha = fecha.element[""].split("/");
+  var fechaModificada =
+    dividirFecha(2) + "/" + dividirFecha(1) + "/" + dividirFecha(0);
+    return fechaModificada;
+}
