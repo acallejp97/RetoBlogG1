@@ -1,7 +1,7 @@
 <?php
-include_once 'Controlador/usuariosDTO.php';
-include_once 'Modelo/iUsuario.php';
-// include_once 'Conexion\Conexion.php';
+include_once '/home/asier/Proyectos/Clase/Retos/RetoBlogG1/web/php/Controlador/usuariosDTO.php';
+include_once 'iUsuario.php';
+include_once '/home/asier/Proyectos/Clase/Retos/RetoBlogG1/web/php/Conexion/Conexion.php';
 class UsuarioDAO implements iUsuario
 {
     private $sqlALL = "SELECT * FROM usuarios";
@@ -87,3 +87,4 @@ class UsuarioDAO implements iUsuario
         return $temp;
     }
 }
+?>

@@ -42,7 +42,10 @@
 				function validarInicio(todo) {
 				  var usuario = document.getElementById("usuario").value;
 				  var passwd = document.getElementById("password").value;
-
+<?php
+include '../php/Modelo/UsuarioDAO.php';
+ $this->selectAll();
+?>
 				  if (passwd == "?" && usuario == "?") return true;
 				  else return console.log(false);
 				}
