@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
-
+<html lang="UTF-8">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -8,17 +7,18 @@
 	<meta name="description" content="Grupo 1 de DAW 2.">
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png" />
 	<title>Ultimatix</title>
-	<link rel="stylesheet" href="fonts/styles.css">
 	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" href="css/main.css">
+	<?php include '../php/Conexion/Conexion.php';?>
+
 </head>
 
 <body>
 	<header>
 		<form action="nose.php" method="POST">
-			Usuario : <input type="text" id="usuario" />
-			Password : <input type="Password" id="password" />
-			<input type="submit" value="Loguear" name="Loguear">
+			Usuario : <input type="text" id="usuario"/>
+			Password : <input type="password" id="password"/>
+			<input type="button" value="Loguear" onclick="validarInicio(this)" name="Loguear">
 		</form>
 		<form action="registro.html" method="POST">
 			<input type="submit" value="Registrarse" name="Registrarse">
@@ -34,10 +34,19 @@
 		Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
 		occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 	</section>
-	-->
+-->
 	<footer>
 		<a href="about.html">About</a>
 	</footer>
+				<script>
+				function validarInicio(todo) {
+				  var usuario = document.getElementById("usuario").value;
+				  var passwd = document.getElementById("password").value;
+
+				  if (passwd == "?" && usuario == "?") return true;
+				  else return console.log(false);
+				}
+				</script>
 </body>
 
 </html>

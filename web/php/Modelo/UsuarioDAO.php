@@ -7,8 +7,8 @@ class UsuarioDAO implements iUsuario
     private $sqlALL = "SELECT * FROM usuarios";
     private $sqlByID = "SELECT permisos FROM usuarios WHERE id=?";
     private $sqlUPDATE = "UPDATE usuarios SET nombre=?, email=? WHERE id=?";
-    private $sqlINSERT = "INSERT INTO usuarios (nombre,password,email,permisos) VALUES (?,?,?,?)";
-    private $sqlDELETE = " DELETE FROM usuarios WHERE id=? AND (id=? OR id=?)";
+    private $sqlINSERT = "INSERT INTO usuarios (nombre, password, email, permisos) VALUES (?,?,?,?)";
+    private $sqlDELETE = "DELETE FROM usuarios WHERE id=? AND (id=? OR id=?)";
     //Devuelve todos los usuarios de la tabla
     public function selectALL()
     {

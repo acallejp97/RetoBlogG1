@@ -1,11 +1,11 @@
 <?php
+$db = "G1Blog";
+$servidor = "localhost";
+$username = "root";
+$password = "";
+$conn;
 class Conexion
 {
-    private $db = "G1Reto";
-    private $servidor = "mysql:host=127.0.0.1;dbname=";
-    private $username = "root";
-    private $password = "";
-    private $conn;
     private static $instance = null;
 
     private function __construct()
@@ -18,9 +18,10 @@ class Conexion
 
     public static function getInstance()
     {
+        global $db, $servidor, $username, $password, $conn;
         if (!isset(self::$instance)) {
             $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-            self::$instance = new PDO("mysql:host=127.0.0.1;dbname=" . "g1Reto", "root", "", $pdo_options);
+            self::$instance = new PDO("mysql:host=" . $servidor . ";dbname=" . $db, $username, $password, $pdo_options);
         }
         return self::$instance;
     }
