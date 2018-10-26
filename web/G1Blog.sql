@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 16-10-2018 a las 14:00:08
+-- Tiempo de generación: 26-10-2018 a las 09:17:52
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -66,7 +66,7 @@ INSERT INTO `categorias` (`id`, `nombre`) VALUES
 
 CREATE TABLE `comentarios` (
   `id` int(11) NOT NULL,
-  `comentario` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `texto` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL,
   `fecha` date NOT NULL,
   `id_articulos` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL
