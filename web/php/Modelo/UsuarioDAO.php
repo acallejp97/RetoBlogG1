@@ -1,6 +1,6 @@
 <?php
-    include_once 'Controlador/usuariosDTO.php';
-    include_once 'Modelo/iUsuario.php';
+    include 'Controlador/usuariosDTO.php';
+    include 'Modelo/iUsuario.php';
    // include_once 'Conexion\Conexion.php';
 	class UsuarioDAO implements iUsuario
 	{		
