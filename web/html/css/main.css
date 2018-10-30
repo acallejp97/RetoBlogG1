@@ -2,7 +2,7 @@
 
 body {
 	background-color: rgba(204, 219, 220, 1);
-	color: rgba(0, 126, 167, 1);
+	color: rgb(3, 147, 196);
 }
 
 .up-button {
@@ -71,7 +71,8 @@ section {
     width: 100%;
     max-width: 1200px;
     margin: auto;
-    padding: 15px 0px;
+	padding: 15px 0px;
+	margin-left: 5rem;
 }
 
 section p {
@@ -98,6 +99,20 @@ video {
 	max-width: 80%;
 }
 
+aside {
+	background-color: #50afcf;
+    width: 30%;
+    padding-left: .5rem;
+    margin-left: .5rem;
+    float: right;
+	color: #29627e;
+	border: rgba(0, 126, 167, 1) solid;
+}
+
+aside > p {
+    margin: .5rem;
+}
+
 @media (max-width: 768px) {
 
 .content-wrapper {
@@ -115,5 +130,6 @@ video {
 	width: 100%;
 	max-width: 100%;
 }
+
 
 }
