@@ -1,6 +1,6 @@
 <?php
-    include 'Controlador/usuariosDTO.php';
-    include 'Modelo/iUsuario.php';
+    include_once 'Controlador/usuariosDTO.php';
+    include_once 'Modelo/iUsuario.php';
    // include_once 'Conexion\Conexion.php';
 	class UsuarioDAO implements iUsuario
 	{		
@@ -69,12 +69,12 @@
 		//Guarda un nuevo usuario				
 		public function insert($nombre,$password, $email, $permisos)
 		{
-                    $db=Conexion::getInstance();
+            $db=Conexion::getInstance();
 		    $consulta=$db->prepare($this->sqlINSERT);
 		    $consulta->bindParam(1,$nombre);
 		    $consulta->bindParam(2,$password);
 		    $consulta->bindParam(3,$email);
-                    $consulta->bindParam(4,$permisos);
+            $consulta->bindParam(4,$permisos);
 		    $temp=$consulta->execute(); 
                    
 			return $temp;
@@ -90,6 +90,28 @@
                     $temp=$consulta->execute();
 		    return $temp;
 		}		
+
+		public function selectByNAMEPWD($name, $pwd)
+		{
+			echo "Entra en el metodo<br>";
+			$sqlBYNAMEPWD="SELECT * FROM usuarios WHERE nombre=? and password=?";
+			$db=Conexion::getInstance();
+			echo "Antes de pasar parametros<br>";
+			$consulta=$db->prepare($sqlBYNAMEPWD);
+			$consulta->bindParam(1,$name);
+			$consulta->bindParam(2,$pwd);
+			echo "Antes del execute<br>";
+			$listaUsuario=$consulta->execute();
+			echo "Despues del execulte<br>";
+				$usuario=new usuariosDTO();
+				$usuario->setidUsuario($listaUsuario["id"]);
+				$usuario->setNombre($listaUsuario["nombre"]);
+				$usuario->setPwd($listaUsuario["password"]);
+				$usuario->setEmail($listaUsuario["email"]);
+				$usuario->setPermisos($listaUsuario["permisos"]);
+				$usuario->toString();
+				return $usuario;
+		}
 	}
 
 ?>

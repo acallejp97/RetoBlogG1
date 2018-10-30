@@ -13,13 +13,19 @@ include (BASE_PATH . '/config/config.php');
             include "./Conexion/Conexion.php";
             include "./Modelo/UsuarioControler.php";
             include "./Modelo/ArticuloDAO.php";
+            include_once "./Modelo/UsuarioDAO.php";
             include "./Controlador/ArticuloControler.php";
-	    include_once "./Controlador/articuloDTO.php";
-
+	        include_once "./Controlador/articuloDTO.php";
+            include_once "./Controlador/usuarioDTO.php";
             /* Pruebas con la tabla de Articulos */
             $articuloControler=new ArticuloControler();
             $articuloDao=new ArticuloDAO();           
-            $conectar->cerrar();
+            $usuarioDao= new UsuarioDAO();
+
+            $usuarioDto=new usuarioDTO();
+
+            $usuarioDto=$usuarioDao->selectByNAMEPWD("Victor", "es el mejor");
+            echo $usuarioDto->toString();
 	?>
     </body>
 </html>

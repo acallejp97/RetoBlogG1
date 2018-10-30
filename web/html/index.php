@@ -66,7 +66,7 @@ if (isset($_POST["login"])) {
 -->
 	<footer>
 		<a href="about.html">About</a>
-	</footer>
+</footer>
 				<script>
 				function validarInicio(todo) {
 				  var usuario = document.getElementById("usuario").value;
