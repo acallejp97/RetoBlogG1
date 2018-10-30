@@ -9,16 +9,45 @@
 	<title>Ultimatix</title>
 	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" href="css/main.css">
-	<?php include '../php/Conexion/Conexion.php';?>
+	<!--<?php include '../php/Conexion/Conexion.php';?> -->
 
 </head>
 
 <body>
 	<header>
-		<form action="nose.php" method="POST">
+		<?php
+if (isset($_POST["login"])) {
+
+    if (!empty($_POST["usuario"]) && !empty($_POST["password"])) {
+        $username = $_POST["usuario"];
+        $password = $_POST["password"];
+
+        $query = mysql_query("SELECT * FROM usertbl WHERE username=’" . $username . "’ AND password=’" . $password . "’");
+
+        $numrows = mysql_num_rows($query);
+        if ($numrows != 0) {
+            while ($row = mysql_fetch_assoc($query)) {
+                $dbusername = $row["usuario"];
+                $dbpassword = $row["password"];
+            }
+
+            if ($username == $dbusername && $password == $dbpassword) {
+                $_SESSION["session_username"] = $username;
+            }
+        } else {
+
+            $message = "Nombre de usuario ó contraseña invalida!";
+        }
+
+    } else {
+        $message = "Todos los campos son requeridos!";
+    }
+}
+?>
+		<form action="../php/usuarioDAO.php" method="POST">
 			Usuario : <input type="text" id="usuario"/>
 			Password : <input type="password" id="password"/>
-			<input type="button" value="Loguear" onclick="validarInicio(this)" name="Loguear">
+			<input type="submit" name="login" class="button" onclick="validarInicio(this)" name="login">
 		</form>
 		<form action="registro.html" method="POST">
 			<input type="submit" value="Registrarse" name="Registrarse">
@@ -44,7 +73,7 @@
 				  var passwd = document.getElementById("password").value;
 <?php
 include '../php/Modelo/UsuarioDAO.php';
- $this->selectAll();
+$this->selectAll();
 ?>
 				  if (passwd == "?" && usuario == "?") return true;
 				  else return console.log(false);
