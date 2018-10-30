@@ -1,8 +1,8 @@
 <?php
 class Conexion
 {
-    private $db = "G1Reto";
-    private $servidor = "mysql:host=127.0.0.1;dbname=";
+    private $db = "G1Blog";
+    private $servidor = "localhost";
     private $username = "root";
     private $password = "";
     private $conn;
@@ -20,7 +20,7 @@ class Conexion
     {
         if (!isset(self::$instance)) {
             $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-            self::$instance = new PDO("mysql:host=127.0.0.1;dbname=" . "g1blog", "root", "", $pdo_options);
+            self::$instance = new PDO("mysql:host=" . $servidor . ";" . "dbname=" . $db, $username, $password, $pdo_options);
         }
         return self::$instance;
     }
