@@ -1,5 +1,5 @@
 <?php
-	class usuarioDTO
+	class usuariosDTO
 	{
 		private $idUsuario;	//Id del usuario en la BD. Se crea automaticamente en la BD
 		private $nombre;	//Nombre que ha elegido el usuario para identificarse
@@ -9,11 +9,11 @@
 
 		function __construct()
 		{
-			$idUsuario=0;				//Id del usuario en la BD
-			$nombre="No definido";		//Este y los dos siguientes tienen que ser siempre string
-			$passwword="No definido";
-			$email="No definido";
-			$permisos=2;				//Inicialmente lo inicializamos como usuario
+			$this->idUsuario=0;				//Id del usuario en la BD
+			$this->nombre="No definido";		//Este y los dos siguientes tienen que ser siempre string
+			$this->passwword="No definido";
+			$this->email="No definido";
+			$this->permisos=2;				//Inicialmente lo inicializamos como usuario
 		}
 		//Funciones para definir el valor de los atributos
 		public function setIdUsuario($id)
@@ -28,7 +28,7 @@
 
 		public function setPwd($contrasenia)
 		{
-			$this->password=$contasenia;
+			$this->password=$contrasenia;
 		}
 
 		public function setEmail($correo)
@@ -66,10 +66,10 @@
 		{
 			return $this->permisos;
 		}
-
-		public function toString()
-		{
-			return "Id: ".$this->idUsuario." "." Nombre: ".$this->nombre." "." Email: ".$this->email."<br>";
-		}
+                
+                public function toString()
+                {
+                    return "<p>Id: ".$this->idUsuario." Nombre: ".$this->nombre." Email: ".$this->email."</p>";
+                }
 	}
 ?>

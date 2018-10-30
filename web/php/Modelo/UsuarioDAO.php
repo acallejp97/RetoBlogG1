@@ -9,7 +9,7 @@
 		private $sqlUPDATE="UPDATE usuarios SET nombre=?, email=? WHERE id=?";
 		private $sqlINSERT="INSERT INTO usuarios (nombre,password,email,permisos) VALUES (?,?,?,?)";  
 		private $sqlDELETE=" DELETE FROM usuarios WHERE id=? AND (id=? OR id=?)";
-		//Devuelve todos los usuarios de la tabla
+		//Devuelve todos los usuarios de la tabla en un array de objetos usuariosDTO
 		public function selectALL()	
 		{
             $temp=[]; //array en el que guardamos los objetos usuarios
@@ -27,7 +27,7 @@
 			}
 			return $temp;
 		}
-		//Devuelve un registro de la tabla que cumpla los criterios que le digamos
+		/*Devuelve un registro de la tabla que cumpla los criterios que le digamos. Devuelve array de objetos usuarioDTO con la lista de los usuarios que tienen el email que se pasa como parametro*/
 		public function selectByEMAIL($email)
 		{
 			$sqlByEMAIL="SELECT * FROM usuarios WHERE email='".$email."'";
@@ -48,7 +48,7 @@
                         
 			return $temp;
 		}		
-		//Actualiza los datos de un usuario    
+		//Actualiza los datos de un usuario. Devuelve el número de filas afectadas    
 		public function update($id, $nombre, $email)
 		{
 			try	
@@ -66,20 +66,20 @@
 			}
 			return $temp;
 		}	
-		//Guarda un nuevo usuario				
+		//Guarda un nuevo usuario. Devuelve el número de filas afectadas			
 		public function insert($nombre,$password, $email, $permisos)
 		{
-            $db=Conexion::getInstance();
+                    $db=Conexion::getInstance();
 		    $consulta=$db->prepare($this->sqlINSERT);
 		    $consulta->bindParam(1,$nombre);
 		    $consulta->bindParam(2,$password);
 		    $consulta->bindParam(3,$email);
-            $consulta->bindParam(4,$permisos);
+                    $consulta->bindParam(4,$permisos);
 		    $temp=$consulta->execute(); 
                    
 			return $temp;
 		}	
-		//Borra un usuario (cualquiera menos el admin)
+		//Borra un usuario (cualquiera menos el admin). Devuelve el número de filas afectadas
 		public function delete($idUsuarioBorrar, $idOrder)
 		{
 		    $db=Conexion::getInstance();
@@ -90,28 +90,24 @@
                     $temp=$consulta->execute();
 		    return $temp;
 		}		
-
-		public function selectByNAMEPWD($name, $pwd)
-		{
-			echo "Entra en el metodo<br>";
-			$sqlBYNAMEPWD="SELECT * FROM usuarios WHERE nombre=? and password=?";
-			$db=Conexion::getInstance();
-			echo "Antes de pasar parametros<br>";
-			$consulta=$db->prepare($sqlBYNAMEPWD);
-			$consulta->bindParam(1,$name);
-			$consulta->bindParam(2,$pwd);
-			echo "Antes del execute<br>";
-			$listaUsuario=$consulta->execute();
-			echo "Despues del execulte<br>";
+	   
+	   //Devuelve un objeto usuarioDTO con los datos del usuario que intenta iniciar sesión (si existe)
+        public function selectLogin($name, $pwd)
+        {
+            $sqlSelectLogin="SELECT * FROM usuarios WHERE nombre='".$name."' AND password='".$pwd."'";
+            $db=Conexion::getInstance();
+           	//Utilizamos una consulta preparada
+			$listaUsuarios=$db->query($sqlSelectLogin);
+			while($usuarioTemp=$listaUsuarios->fetch())
+			{
 				$usuario=new usuariosDTO();
-				$usuario->setidUsuario($listaUsuario["id"]);
-				$usuario->setNombre($listaUsuario["nombre"]);
-				$usuario->setPwd($listaUsuario["password"]);
-				$usuario->setEmail($listaUsuario["email"]);
-				$usuario->setPermisos($listaUsuario["permisos"]);
-				$usuario->toString();
-				return $usuario;
-		}
-	}
-
+				$usuario->setidUsuario($usuarioTemp["id"]);
+				$usuario->setNombre($usuarioTemp["nombre"]);
+				$usuario->setPwd($usuarioTemp["password"]);
+				$usuario->setEmail($usuarioTemp["email"]);
+				$usuario->setPermisos($usuarioTemp["permisos"]);
+			}
+             return $usuario;
+        }
+            }
 ?>
