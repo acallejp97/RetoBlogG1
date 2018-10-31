@@ -12,6 +12,20 @@
 </head>
 
 <body>
+    <article>
+        <aside>
+            <h1>Criterio de busqueda</h1>
+            <p>
+                <form action="nose.php" method="POST">
+                    Fecha<input type="date" id="fecha" />
+                    <br><br>
+                    <input type="submit" value="Buscar" name="Buscar">
+                    <input type="reset" value="Limpiar" name="Limpiar">
+                </form>
+            </p>
+        </aside>
+	</article>
+	
 	<header id="logueo">
 		<form action="../php/Modelo/UsuarioDAO" method="POST">
 
@@ -40,7 +54,7 @@ $link = new PDO('mysql:host=localhost;dbname=G1Blog', 'root', ''); // el campo v
 			<?php foreach ($link->query('SELECT * from articulos') as $row) { // aca puedes hacer la consulta e iterarla con each. ?>
 			<tr>
 				<td>
-					<?php echo $row['titulo']// aca te faltaba poner los echo para que se muestre el valor de la variable.         ?>
+					<?php echo $row['titulo']// aca te faltaba poner los echo para que se muestre el valor de la variable.            ?>
 				</td>
 			</tr>
 			<tr>
@@ -63,9 +77,6 @@ $link = new PDO('mysql:host=localhost;dbname=G1Blog', 'root', ''); // el campo v
 		</table>
 
 	</section>
-	<footer>
-		<a href="about.html">About</a>
-	</footer>
 	<script>
 		document.getElementById("CrearPost").style.visibility = "hidden";
 
@@ -81,6 +92,9 @@ $link = new PDO('mysql:host=localhost;dbname=G1Blog', 'root', ''); // el campo v
 			}
 		}
 	</script>
+	<footer>
+		<a href="about.html">About</a>
+	</footer>
 </body>
 
 </html>
