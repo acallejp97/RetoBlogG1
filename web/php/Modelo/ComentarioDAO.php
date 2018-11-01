@@ -11,8 +11,8 @@ class ComentarioDAO //implements iComentario
 {
     private $sqlALL = "SELECT * FROM comentarios";
     private $sqlByID = "SELECT * FROM comentarios WHERE id=";
-    private $sqlUPDATE = "UPDATE comentarios SET texto=?, fecha=?, id_articulos=?, id_usuario=? WHERE id=?";
-    private $sqlINSERT = "INSERT INTO comentarios (texto,fecha,id_articulos,id_usuario) VALUES (?,?,?,?)";
+    private $sqlUPDATE = "UPDATE comentarios SET comentario=?, fecha=?, id_articulos=?, id_usuario=? WHERE id=?";
+    private $sqlINSERT = "INSERT INTO comentarios (comentario,fecha,id_articulos,id_usuario) VALUES (?,?,?,?)";
     private $sqlDELETE = " DELETE FROM comentarios WHERE id=?";
     //Borra un comentario de la base de datos. Devuelve el número de filas afectadas
     public function delete($idComentario, $idArticulo, $idUsuario)
@@ -33,12 +33,12 @@ class ComentarioDAO //implements iComentario
         while ($comentarioTemp = $listaComentarios->fetch()) {
             $comentario = new comentariosDTO();
             $comentario->setIdComentario($comentarioTemp["id"]);
-            $comentario->setComentario($comentarioTemp["texto"]);
+            $comentario->setComentario($comentarioTemp["comentario"]);
             $comentario->setFecha($comentarioTemp["fecha"]);
             $comentario->setIdArticulo($comentarioTemp["id_articulos"]);
             $comentario->setIdAutor($comentarioTemp["id_usuario"]);
-            array_push($temp, $comentario);
-            
+            array_push($temp, $comentario);        
+            echo $comentario->toString();    
         }
         return $temp;
     }
@@ -79,17 +79,17 @@ class ComentarioDAO //implements iComentario
       $this->sqlByID=$this->sqlByID.$idComentario;
       $db= Conexion::getInstance();
            
-      $comentario1=$db->query($this->sqlByID);
+      $comentario=$db->query($this->sqlByID);
      /* $consulta->bindParam(1, $idComentario);
       $comentario=$consulta->execute();*/
-      if($comentario=$comentario1->fetch())
-      {       
-        $comentarioDto = new comentariosDTO();
-        $comentarioDto->setIdComentario($comentario["id"]);
-        $comentarioDto->setComentario($comentario["texto"]);
-        $comentarioDto->setFecha($comentario["fecha"]);
-        $comentarioDto->setIdArticulo($comentario["id_articulos"]);
-        $comentarioDto->setIdAutor($comentario["id_usuario"]);
+      $comentarioDto = new comentariosDTO();
+      if($comentario1=$comentario->fetch())
+      {               
+        $comentarioDto->setIdComentario($comentario1["id"]);
+        $comentarioDto->setComentario($comentario1["comentario"]);
+        $comentarioDto->setFecha($comentario1["fecha"]);
+        $comentarioDto->setIdArticulo($comentario1["id_articulos"]);
+        $comentarioDto->setIdAutor($comentario1["id_usuario"]);
       }
       echo $comentarioDto->toString();
       return $comentarioDto;

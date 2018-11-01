@@ -1,6 +1,6 @@
 <?php
     //include_once 'C:\wamp64\www\RetoBlogG1\Modelo\ArticuloDAO.php';
-    include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Modelo/ArticuloDAO.php';;
+    include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Modelo/ArticuloDAO.php';
     class ArticuloControler
     {
         private $articuloDao;
