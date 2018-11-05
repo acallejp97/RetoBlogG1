@@ -27,7 +27,7 @@ class Conexion
                 
                 public static function cerrar()
                 {
-                    $this->instance=null;
+                    //$this->instance=null;
                 }
                 /*function __construct() 
                 {
