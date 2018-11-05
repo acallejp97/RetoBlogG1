@@ -1,9 +1,11 @@
 <?php
- include_once 'Controlador/articuloDTO.php';
- include_once 'Modelo/iArticulo.php';
+ /*include_once 'Controlador/articuloDTO.php';
+ include_once 'Modelo/iArticulo.php';*/
+    include_once '../php/Controlador/articuloDTO.php';
+   include_once '../php/Modelo/iArticulo.php';
 
 class ArticuloDAO implements iArticulo{
-   private $sqlALL="SELECT * FROM articulos";		
+   private $sqlALL="SELECT * FROM articulos ORDER BY fecha";		
    private $sqlByID="SELECT * FROM articulos WHERE id=";
    private $sqlUPDATE="UPDATE articulos SET texto=?, valoracion=?, categoria=?, publicado=?, fecha=? WHERE id=?";
    private $sqlINSERT="INSERT INTO articulos (fecha,texto,id_autor,valoracion,categoria,publicado) VALUES (?,?,?,?,?,?)";  
@@ -26,17 +28,15 @@ class ArticuloDAO implements iArticulo{
     
     //Selecciona todos los registros de la base de datos
     public function selectALL() {
-        echo "Entra en selectALL<br>";
         $this->sqlALL="SELECT * FROM articulos";
         $temp=[];
         $db= Conexion::getInstance();
         $listaArticulos=$db->query($this->sqlALL);
-        echo $this->sqlALL."<br>";
         while($articuloTemp=$listaArticulos->fetch())
         {            
-            
             $articulo= new articuloDTO();
             $articulo->setIdArticulo($articuloTemp["id"]);
+            $articulo->setTitulo($articuloTemp["titulo"]);
             $articulo->setFecha($articuloTemp["fecha"]);
             $articulo->setTexto($articuloTemp["texto"]);
             $articulo->setIdAutor($articuloTemp["id_autor"]);
@@ -44,7 +44,6 @@ class ArticuloDAO implements iArticulo{
             $articulo->setIdCategoria($articuloTemp["categoria"]);
             $articulo->setPublicado($articuloTemp["publicado"]);
             array_push($temp,$articulo);
-            $articulo->toString();
         }
         return $temp;
     }
@@ -82,10 +81,9 @@ class ArticuloDAO implements iArticulo{
     
     //Selecciona un articulo por el ideificador
     public function selectBYID($id) {
-        
         $db=Conexion::getInstance();
         $temp=[];
-	$listaUsuarios=$db->query($this->sqlByID.$id);
+	    $listaUsuarios=$db->query($this->sqlByID.$id);
         while($temp=$listaUsuarios->fetch())
         {
             $articuloDto=new ArticuloDTO();
@@ -103,10 +101,9 @@ class ArticuloDAO implements iArticulo{
     }
     //Devuelve los articulos en función a la fecha de publicación
     public function selectByFecha($fecha) {
-        echo "Entramos en selectByFecha<br>";
         $temp=[];//Variable para guardar y devolver la lista de articulos que salga de la SELECT
         $db=Conexion::getInstance();
-	$listaArticulos=$db->query($this->sqlSELECTByDATE.$fecha);        
+	    $listaArticulos=$db->query($this->sqlSELECTByDATE.$fecha);        
         while($articuloTemp=$listaArticulos->fetch())
         {            
             $articulo= new articuloDTO();

@@ -1,6 +1,7 @@
 <?php 
-     include_once '/home/ik2dw3/Escritorio/WEBS/Victor/RetoBlogG1/web/php/Modelo/ComentarioDAO.php';
-    include_once 'comentariosDTO.php';
+    //include_once '/home/ik2dw3/Escritorio/WEBS/Victor/RetoBlogG1/web/php/Modelo/ComentarioDAO.php';
+    include_once '../php/Modelo/ComentarioDAO.php';
+    include_once '../php/Controlador/comentariosDTO.php';
  	class ComentarioControler
  	{
  		private $comentarioDao;
@@ -29,10 +30,11 @@
  			$numFilas=$this->comentarioDao->insert($texto, $fecha, $id_articulos, $id_usuario);
  		}
 
- 		public function buscarComentarioPorID($idComentario, $idUsuario)
+ 		public function buscarComentarioPorID($idComentario, $idArticulo)
  		{
- 			$numFilas=$this->comentarioDao->selectBYID($idComentario, $idUsuario);
- 			return $numFilas;
+ 			$listaComentarios=[];
+ 			$listaComentarios=$this->comentarioDao->selectBYID($idComentario, $idArticulo);
+ 			return $listaComentarios;
  		}
  	}
 ?>
