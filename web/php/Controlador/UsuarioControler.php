@@ -30,7 +30,7 @@
 		public function guardarUsuario($nombre,$password, $email, $permisos)
 		{
 			$numFilas=$usuarioDao->insert($nombre,$password, $email, $permisos);
-			return $numFilas
+			return $numFilas;
 		}
     }
 ?>
