@@ -25,9 +25,9 @@
             </p>
         </aside>
 	</article>
-	
+
 	<header id="logueo">
-		<form action="../php/Modelo/UsuarioDAO" method="POST">
+		<form action="../php/Modelo/UsuarioDAO.php" method="POST">
 
 			Usuario : <input type="text" id="usuario" />
 			Password : <input type="password" id="password" />
@@ -54,7 +54,7 @@ $link = new PDO('mysql:host=localhost;dbname=G1Blog', 'root', ''); // el campo v
 			<?php foreach ($link->query('SELECT * from articulos ORDER BY fecha DESC') as $row) { // aca puedes hacer la consulta e iterarla con each. ?>
 			<tr>
 				<td>
-					<h2><a href="./verPost.html"><?php echo $row['titulo']?></a></h2>
+					<h2><a href="./verPost.html"><?php echo $row['titulo'] ?></a></h2>
 					<?php echo $row['fecha'] ?><br>
 					<?php echo $row['texto'] ?>
 				</td>
