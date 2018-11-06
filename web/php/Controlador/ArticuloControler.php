@@ -1,6 +1,7 @@
 <?php
-    //include_once 'C:\wamp64\www\RetoBlogG1\Modelo\ArticuloDAO.php';
-    include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Modelo/ArticuloDAO.php';
+    include_once '../php/Modelo/ArticuloDAO.php';
+    include_once '../php/Controlador/articuloDTO.php';
+    //include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Modelo/ArticuloDAO.php';
     class ArticuloControler
     {
         private $articuloDao;
@@ -13,9 +14,8 @@
 
         public function buscarTodosArticulos()
         {
-            echo "Entra en buscarTodosArticulos()";
             $temp=[];
-	    $temp=$this->articuloDao->selectALL();	
+	        $temp=$this->articuloDao->selectALL();	
             return $temp;            
         }
         
