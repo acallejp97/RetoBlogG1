@@ -1,16 +1,19 @@
 <?php
 /*include_once 'Controlador/comentariosDTO.php';
 include_once 'Modelo/iComentario.php';*/
-include_once '../Controlador/comentariosDTO.php';
-include_once './iComentario.php';
+
+//    include_once '../php/Controlador/comentariosDTO.php';
+//    include_once '../php/Modelo/iComentario.php';
+
+   include_once "../Controlador/comentariosDTO.php";
+   include_once "./iComentario.php";
 
 /**
  * Description of ComentarioDAO
  *
  * @author victor manuel
  */
-class ComentarioDAO//implements iComentario
-
+class ComentarioDAO //implements iComentario
 {
     private $sqlALL = "SELECT * FROM comentarios";
     private $sqlByID = "SELECT * FROM comentarios WHERE id_articulos=";
@@ -40,24 +43,24 @@ class ComentarioDAO//implements iComentario
             $comentario->setFecha($comentarioTemp["fecha"]);
             $comentario->setIdArticulo($comentarioTemp["id_articulos"]);
             $comentario->setIdAutor($comentarioTemp["id_usuario"]);
-            array_push($temp, $comentario);
-            echo $comentario->toString();
+            array_push($temp, $comentario);        
+            echo $comentario->toString();    
         }
         return $temp;
     }
 
     //Actualiza un registro de la base de datos
-    public function update($id, $texto, $fecha, $idArticulo, $idUsuario)
+    public function update($id,$texto,$fecha,$idArticulo,$idUsuario)
     {
         //private $sqlUPDATE = "UPDATE comentarios SET comentario=?, fecha=?, id_articulos=?, id_usuario WHERE id=?";
-        $db = Conexion::getInstance();
-        $consulta = $db->prepare($this->sqlUPDATE);
+        $db= Conexion::getInstance();
+        $consulta=$db->prepare($this->sqlUPDATE);
         $consulta->bindParam(1, $texto);
         $consulta->bindParam(2, $fecha);
         $consulta->bindParam(3, $idArticulo);
-        $consulta->bindParam(4, $idUsuario);
-        $consulta->bindParam(5, $id);
-        $temp = $consulta->execute();
+        $consulta->bindParam(4,$idUsuario);
+        $consulta->bindParam(5,$id);
+        $temp=$consulta->execute();
         return $temp;
     }
 
@@ -79,26 +82,27 @@ class ComentarioDAO//implements iComentario
     //Selecciona un comentario por el identificador
     public function selectBYID($idComentario, $idArticulo)
     {
-        $listaComentarios = [];
-        /*Creamos la consulta, conseguimos una instancia de la conexión y
-         * ejecutamos la sentnecia*/
-        $this->sqlByID = $this->sqlByID . $idArticulo;
-        $db = Conexion::getInstance();
-        $comentario = $db->query($this->sqlByID);
-        /* Con lo que ha devuelto la BD creamos una lista de  objetos comentariosDTO
+      $listaComentarios=[];
+      /*Creamos la consulta, conseguimos una instancia de la conexión y 
+       * ejecutamos la sentnecia*/
+      $this->sqlByID=$this->sqlByID.$idArticulo;
+      $db= Conexion::getInstance();
+      $comentario=$db->query($this->sqlByID);
+     /* Con lo que ha devuelto la BD creamos una lista de  objetos comentariosDTO
         y lo mandamos fuera      */
-        $comentarioDto = new comentariosDTO();
-        while ($comentario1 = $comentario->fetch()) {
-            $comentarioDto->setIdComentario($comentario1["id"]);
-            $comentarioDto->setComentario($comentario1["texto"]); //setComentario($comentario1["comentario"]);
-            $comentarioDto->setFecha($comentario1["fecha"]);
-            $comentarioDto->setIdArticulo($comentario1["id_articulos"]);
-            $comentarioDto->setIdAutor($comentario1["id_usuario"]);
-            array_push($listaComentarios, $comentarioDto);
-            $comentarioDto = new comentariosDTO();
-        }
-        return $listaComentarios;
-
+      $comentarioDto = new comentariosDTO();
+      while($comentario1=$comentario->fetch())
+      {               
+        $comentarioDto->setIdComentario($comentario1["id"]);
+        $comentarioDto->setComentario($comentario1["comentario"]); //setComentario($comentario1["comentario"]);
+        $comentarioDto->setFecha($comentario1["fecha"]);
+        $comentarioDto->setIdArticulo($comentario1["id_articulos"]);
+        $comentarioDto->setIdAutor($comentario1["id_usuario"]);
+        array_push($listaComentarios,$comentarioDto);
+        $comentarioDto=new comentariosDTO();
+      }
+      return $listaComentarios;
+      
     }
 
     //Devuelve los comentarios en función a la fecha de publicación

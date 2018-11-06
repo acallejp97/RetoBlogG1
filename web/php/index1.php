@@ -21,7 +21,7 @@ include_once "./Controlador/articuloDTO.php";
 $usuarioDao = new UsuarioDAO();
 $articuloControler = new ArticuloControler();
 
-$listaUsuarios = $usuarioDao->selectLogin("Victor 1", "superchachi");
+$listaUsuarios = $usuarioDao->selectLogin("admin", "admin");
 $usuario = new usuariosDTO();
 foreach ($listaUsuarios as $usuario) {
     echo $usuario->toString();
