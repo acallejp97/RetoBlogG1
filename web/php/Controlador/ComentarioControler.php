@@ -1,7 +1,7 @@
 <?php 
     //include_once '/home/ik2dw3/Escritorio/WEBS/Victor/RetoBlogG1/web/php/Modelo/ComentarioDAO.php';
-    include_once '../php/Modelo/ComentarioDAO.php';
-    include_once '../php/Controlador/comentariosDTO.php';
+    include_once '../Modelo/ComentarioDAO.php';
+    include_once './comentariosDTO.php';
  	class ComentarioControler
  	{
  		private $comentarioDao;

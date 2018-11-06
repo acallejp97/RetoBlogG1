@@ -1,6 +1,6 @@
 <?php
-  include_once 'C:\wamp64\www\RetoBlogG1\web\php\Controlador\usuarioDTO.php';
-  include_once 'C:\wamp64\www\RetoBlogG1\web\php\Modelo\iUsuario.php';
+  include_once '../Controlador/usuarioDTO.php';
+  include_once './iUsuario.php';
    /* include_once 'Controlador/usuariosDTO.php';
     include_once 'Modelo/iUsuario.php';*/
    

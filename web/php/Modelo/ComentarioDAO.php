@@ -1,8 +1,8 @@
 <?php
 /*include_once 'Controlador/comentariosDTO.php';
 include_once 'Modelo/iComentario.php';*/
-   include_once '../php/Controlador/comentariosDTO.php';
-   include_once '../php/Modelo/iComentario.php';
+   include_once '../Controlador/comentariosDTO.php';
+   include_once './iComentario.php';
 
 /**
  * Description of ComentarioDAO

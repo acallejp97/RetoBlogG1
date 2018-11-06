@@ -1,6 +1,6 @@
 <?php
- include_once 'Controlador/articuloDTO.php';
- include_once 'Modelo/iArticulo.php';
+ include_once './articuloDTO.php';
+ include_once '../Modelo/iArticulo.php';
 
 class ArticuloDAO implements iArticulo{
    private $sqlALL="SELECT * FROM articulos";		

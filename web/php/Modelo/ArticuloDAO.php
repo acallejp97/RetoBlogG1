@@ -1,8 +1,8 @@
 <?php
  /*include_once 'Controlador/articuloDTO.php';
  include_once 'Modelo/iArticulo.php';*/
-    include_once '../php/Controlador/articuloDTO.php';
-   include_once '../php/Modelo/iArticulo.php';
+    include_once '../Controlador/articuloDTO.php';
+   include_once './Articulo.php';
 
 class ArticuloDAO implements iArticulo{
    private $sqlALL="SELECT * FROM articulos ORDER BY fecha";		

@@ -1,6 +1,6 @@
 <?php
-    include_once '../php/Modelo/ArticuloDAO.php';
-    include_once '../php/Controlador/articuloDTO.php';
+    include_once '../Modelo/ArticuloDAO.php';
+    include_once './articuloDTO.php';
     //include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Modelo/ArticuloDAO.php';
     class ArticuloControler
     {
