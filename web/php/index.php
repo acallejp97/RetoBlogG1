@@ -10,12 +10,14 @@ include (BASE_PATH . '/config/config.php');
     </head>
     <body>
        <?php
-include "./Conexion/Conexion.php";
-include "./Modelo/UsuarioControler.php";
-include "./Modelo/ArticuloDAO.php";
-include_once "./Modelo/ComentarioDAO.php";
-include_once "./Controlador/comentariosDTO.php";
-include_once "./Controlador/ComentarioControler.php";
+define('RAIZ_APLICACION', dirname(__FILE__));
+
+include RAIZ_APLICACION . "/Conexion/Conexion.php";
+include RAIZ_APLICACION . "/Modelo/UsuarioControler.php";
+include RAIZ_APLICACION . "/Modelo/ArticuloDAO.php";
+include_once RAIZ_APLICACION . "/Modelo/ComentarioDAO.php";
+include_once RAIZ_APLICACION . "/Controlador/comentariosDTO.php";
+include_once RAIZ_APLICACION . "/Controlador/ComentarioControler.php";
 
 /*Pruebas con Comentarios*/
 $comentarioCont = new ComentarioControler();

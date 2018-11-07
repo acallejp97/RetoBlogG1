@@ -10,12 +10,14 @@ include (BASE_PATH . '/config/config.php');
     </head>
     <body>
        <?php
-include "./Conexion/Conexion.php";
-include "./Modelo/UsuarioControler.php";
-include "./Modelo/ArticuloDAO.php";
-include_once "./Modelo/UsuarioDAO.php";
-include "./Controlador/ArticuloControler.php";
-include_once "./Controlador/articuloDTO.php";
+define('RAIZ_APLICACION', dirname(__FILE__));
+
+include RAIZ_APLICACION . "/Conexion/Conexion.php";
+include RAIZ_APLICACION . "/Modelo/UsuarioControler.php";
+include RAIZ_APLICACION . "/Modelo/ArticuloDAO.php";
+include_once RAIZ_APLICACION . "/Modelo/UsuarioDAO.php";
+include RAIZ_APLICACION . "/Controlador/ArticuloControler.php";
+include_once RAIZ_APLICACION . "/Controlador/articuloDTO.php";
 
 /* Pruebas con la tabla de Articulos */
 $usuarioDao = new UsuarioDAO();

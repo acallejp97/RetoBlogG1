@@ -1,10 +1,11 @@
 <?php
 session_start();
-include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Controlador/ArticuloControler.php';
-include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Controlador/articuloDTO.php';
-include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Conexion/Conexion.php';
-//include 'C:\wamp64\www\RetoBlogG1\web\php\Controlador\ArticuloControler.php';
-//include 'C:\wamp64\www\RetoBlogG1\web\php\Conexion\Conexion.php';
+define('RAIZ_APLICACION', dirname(__FILE__));
+
+include_once RAIZ_APLICACION . '../php/Controlador/ArticuloControler.php';
+include_once RAIZ_APLICACION . '../php/Controlador/articuloDTO.php';
+include_once RAIZ_APLICACION . '../php/Conexion/Conexion.php';
+
 $fecha=$_POST["fecha"];
 $articuloControl=new ArticuloControler();
 $listaArticulos=$articuloControl->buscarPorFecha($fecha);

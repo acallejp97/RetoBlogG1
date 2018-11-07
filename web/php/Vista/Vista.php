@@ -1,23 +1,14 @@
 <?php
-include_once '../php/Controlador/ArticuloControler.php';
-include_once '../php/Controlador/ComentarioControler.php';
-include_once '../php/Controlador/comentariosDTO.php';
-include_once '../php/Controlador/articuloDTO.php';
-include_once '../php/Controlador/usuarioDTO.php';
-include_once '../php/Controlador/UsuarioControler.php';
 
-// include_once '../Controlador/ArticuloControler.php';
-// include_once '../Controlador/ComentarioControler.php';
-// include_once '../Controlador/comentariosDTO.php';
-// include_once '../Controlador/articuloDTO.php';
-// include_once '../Controlador/usuarioDTO.php';
-// include_once '../Controlador/UsuarioControler.php';
+define('RAIZ_APLICACION', dirname(__FILE__));
 
+include_once RAIZ_APLICACION . '../php/Controlador/ArticuloControler.php';
+include_once RAIZ_APLICACION . '../php/Controlador/ComentarioControler.php';
+include_once RAIZ_APLICACION . '../php/Controlador/comentariosDTO.php';
+include_once RAIZ_APLICACION . '../php/Controlador/articuloDTO.php';
+include_once RAIZ_APLICACION . '../php/Controlador/usuarioDTO.php';
+include_once RAIZ_APLICACION . '../php/Controlador/UsuarioControler.php';
 
-/*include_once 'C:\wamp64\www\RetoBlogG1\web\php\Controlador\articuloDTO.php';
-include_once 'C:\wamp64\www\RetoBlogG1\web\php\Controlador\ArticuloControler.php';
-include_once 'C:\wamp64\www\RetoBlogG1\web\php\Controlador\ComentarioControler.php';
-include_once 'C:\wamp64\www\RetoBlogG1\web\php\Controlador\comentariosDto.php';*/
 class Vista
 {
     private $salida;

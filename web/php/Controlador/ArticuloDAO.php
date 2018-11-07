@@ -1,6 +1,8 @@
 <?php
-include_once './articuloDTO.php';
-include_once '../Modelo/iArticulo.php';
+define('RAIZ_APLICACION', dirname(__FILE__));
+
+include_once RAIZ_APLICACION . './articuloDTO.php';
+include_once RAIZ_APLICACION . '../Modelo/iArticulo.php';
 
 class ArticuloDAO implements iArticulo
 {
