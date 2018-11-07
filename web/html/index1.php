@@ -8,14 +8,16 @@
 	<title>G1Blog</title>
 	<link rel="stylesheet" href="css/main.css">
 	<?php
-include '../php/Conexion/Conexion.php';
-include '../php/Controlador/UsuarioControler.php';
-include '../php/Controlador/ArticuloControler.php';
-include '../php/Controlador/ComentarioControler.php';
-include_once '../php/Controlador/usuarioDTO.php';
-include_once '../php/Controlador/articuloDTO.php';
-include_once '../php/Controlador/comentariosDTO.php';
-include_once '../php/Vista/Vista.php';
+define('RAIZ_APLICACION', dirname(__FILE__));
+
+include RAIZ_APLICACION . '/php/Conexion/Conexion.php';
+include RAIZ_APLICACION . '/php/Controlador/UsuarioControler.php';
+include RAIZ_APLICACION . '/php/Controlador/ArticuloControler.php';
+include RAIZ_APLICACION . '/php/Controlador/ComentarioControler.php';
+include_once RAIZ_APLICACION . '/php/Controlador/usuarioDTO.php';
+include_once RAIZ_APLICACION . '/php/Controlador/articuloDTO.php';
+include_once RAIZ_APLICACION . '/php/Controlador/comentariosDTO.php';
+include_once RAIZ_APLICACION . '/php/Vista/Vista.php';
 ?>
 </head>
 
