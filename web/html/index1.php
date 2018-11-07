@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="UTF-8">
 
@@ -18,6 +21,11 @@ include_once RAIZ_APLICACION . '/../php/Controlador/usuarioDTO.php';
 include_once RAIZ_APLICACION . '/../php/Controlador/articuloDTO.php';
 include_once RAIZ_APLICACION . '/../php/Controlador/comentariosDTO.php';
 include_once RAIZ_APLICACION . '/../php/Vista/Vista.php';
+
+if (isset($_SESSION)) {
+    $vista = new Vista();
+}
+
 ?>
 </head>
 
@@ -35,9 +43,21 @@ include_once RAIZ_APLICACION . '/../php/Vista/Vista.php';
             </p>
         </aside>
 	</article>
+	<?php
+if (isset($_SESSION["usuario"])) {
+    $usuario = $_SESSION["usuario"];
+    foreach ($usuario as $usuario1) {
+        echo "El Id de usuario es: " . $usuario1["idUsuario"] . " Y su nombre es " . $usuario1["nombre"];
+    }
+}
 
+if (isset($_SESSION["listaArticulos"])) {
+    echo "Hay lista de articulos";
+}
+
+?>
 	<header id="initSesion">
-            <form action="../php/Vista/IniciarSesion.php" method="post">
+            <form action="IniciarSesion.php" method="post">
 
 			<label>Usuario :</label> <input type="text" name="usuario" />
 			<label>Password :</label> <input type="password" name="password" />
@@ -57,9 +77,7 @@ include_once RAIZ_APLICACION . '/../php/Vista/Vista.php';
 
 	<section>
 		<?php
-$vista = new Vista();
 echo $vista->mostrarContenido();
-$usuarioCont = new UsuarioController();
 ?>
 
 	</section>

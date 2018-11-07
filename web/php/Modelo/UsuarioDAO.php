@@ -95,7 +95,7 @@ class UsuarioDAO implements iUsuario
         //Utilizamos una consulta preparada
         $listaUsuarios = $db->query($sqlSelectLogin);
         if ($usuarioTemp = $listaUsuarios->fetch()) {
-            $usuario = new usuariosDTO();
+            $usuario = new usuarioDTO();
             $usuario->setidUsuario($usuarioTemp["id"]);
             $usuario->setNombre($usuarioTemp["nombre"]);
             $usuario->setPwd($usuarioTemp["password"]);
