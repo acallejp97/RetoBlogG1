@@ -1,8 +1,8 @@
 <?php
 define('RAIZ_APLICACION', dirname(__FILE__));
 
-include_once RAIZ_APLICACION . "../Modelo/ArticuloDAO.php";
-include_once RAIZ_APLICACION . "./articuloDTO.php";
+include_once RAIZ_APLICACION . "/Modelo/ArticuloDAO.php";
+include_once RAIZ_APLICACION . "/Controlador/articuloDTO.php";
 class ArticuloControler
 {
     private $articuloDao;
