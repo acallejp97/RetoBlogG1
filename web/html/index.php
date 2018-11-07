@@ -7,9 +7,9 @@
 	<meta name="title" content="G1Blog">
 	<title>G1Blog</title>
 	<link rel="stylesheet" href="css/main.css">
-	<?php 
-	
-	include RAIZ_APLICACION . '/php/Conexion/Conexion.php';?>
+	<?php
+
+include RAIZ_APLICACION . '/php/Conexion/Conexion.php';?>
 
 </head>
 

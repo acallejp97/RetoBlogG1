@@ -7,16 +7,16 @@
 	<meta name="title" content="G1Blog">
 	<title>G1Blog</title>
 	<link rel="stylesheet" href="css/main.css">
-	<?php 
-		include '../php/Conexion/Conexion.php';
-		include '../php/Controlador/UsuarioControler.php';
-		include '../php/Controlador/ArticuloControler.php';
-		include '../php/Controlador/ComentarioControler.php';
-	 	include_once '../php/Controlador/usuarioDTO.php';
-		include_once '../php/Controlador/articuloDTO.php';
-		include_once '../php/Controlador/comentariosDTO.php';
-		include_once '../php/Vista/Vista.php';
-	?>
+	<?php
+include '../php/Conexion/Conexion.php';
+include '../php/Controlador/UsuarioControler.php';
+include '../php/Controlador/ArticuloControler.php';
+include '../php/Controlador/ComentarioControler.php';
+include_once '../php/Controlador/usuarioDTO.php';
+include_once '../php/Controlador/articuloDTO.php';
+include_once '../php/Controlador/comentariosDTO.php';
+include_once '../php/Vista/Vista.php';
+?>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
             </p>
         </aside>
 	</article>
-	
+
 	<header id="initSesion">
             <form action="/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Vista/IniciarSesion.php" method="post">
 
@@ -55,10 +55,10 @@
 
 	<section>
 		<?php
-			$vista=new Vista();
-			echo $vista->mostrarContenido();
-             $usuarioCont=new UsuarioController();
-		?>
+$vista = new Vista();
+echo $vista->mostrarContenido();
+$usuarioCont = new UsuarioController();
+?>
 
 	</section>
 	<script>

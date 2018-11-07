@@ -6,7 +6,6 @@ define('RAIZ_APLICACION', dirname(__FILE__));
 include_once RAIZ_APLICACION . '../Controlador/usuarioDTO.php';
 include_once RAIZ_APLICACION . '../Controlador/UsuarioControler.php';
 
-
 $usuario = $_POST["usuario"];
 $pwd = $_POST["password"];
 $usuarioDto = new usuarioDTO();

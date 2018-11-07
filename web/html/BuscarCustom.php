@@ -6,9 +6,9 @@ include_once RAIZ_APLICACION . '../php/Controlador/ArticuloControler.php';
 include_once RAIZ_APLICACION . '../php/Controlador/articuloDTO.php';
 include_once RAIZ_APLICACION . '../php/Conexion/Conexion.php';
 
-$fecha=$_POST["fecha"];
-$articuloControl=new ArticuloControler();
-$listaArticulos=$articuloControl->buscarPorFecha($fecha);
+$fecha = $_POST["fecha"];
+$articuloControl = new ArticuloControler();
+$listaArticulos = $articuloControl->buscarPorFecha($fecha);
 //$_SESSION["listaArticulos"]=$listaArticulos;
 
 header('http://cadenaser.com/');
@@ -19,12 +19,11 @@ header('http://cadenaser.com/');
     </head>
     <body>
         <?php
-        $articulo=new articuloDTO();
-        foreach($listaArticulos as $articulo)
-            {
-                $articulo->toString();
-                $articulo=new articuloDTO();
-            }
-        ?>
+$articulo = new articuloDTO();
+foreach ($listaArticulos as $articulo) {
+    $articulo->toString();
+    $articulo = new articuloDTO();
+}
+?>
     </body>
 </html>
