@@ -1,8 +1,15 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 
 <html lang="">
 <?php
- include RAIZ_APLICACION . "/../php/Modelo/UsuarioControler.php";
+include RAIZ_APLICACION . "/../php/Controlador/UsuarioControler.php";
+$usuario = $_POST["usuario"];
+$email = $_POST["email"];
+$pwd = $_POST["password"];    
+
 ?>
 <head>
     <meta charset="UTF-8">
