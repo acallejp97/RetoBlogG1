@@ -7,7 +7,10 @@
 	<meta name="title" content="G1Blog">
 	<title>G1Blog</title>
 	<link rel="stylesheet" href="css/main.css">
-	<?php include '../php/Conexion/Conexion.php';?>
+	<?php
+
+include RAIZ_APLICACION . '/php/Conexion/Conexion.php';?>
+
 </head>
 
 <body>
@@ -15,7 +18,7 @@
         <aside>
             <h1>Criterio de busqueda</h1>
             <p>
-                <form action="nose.php" method="POST">
+                <form action="" method="POST">
                     Fecha<input type="date" id="fecha" />
                     <br><br>
                     <input type="submit" value="Buscar" name="Buscar">
@@ -24,9 +27,9 @@
             </p>
         </aside>
 	</article>
-	
+
 	<header id="logueo">
-		<form action="../php/Modelo/UsuarioDAO" method="POST">
+		<form action="../php/Modelo/UsuarioDAO.php" method="POST">
 
 			Usuario : <input type="text" id="usuario" />
 			Password : <input type="password" id="password" />
@@ -50,26 +53,15 @@ $link = new PDO('mysql:host=localhost;dbname=G1Blog', 'root', ''); // el campo v
 
 ?>
 		<table>
-			<?php foreach ($link->query('SELECT * from articulos') as $row) { // aca puedes hacer la consulta e iterarla con each. ?>
+			<?php foreach ($link->query('SELECT * from articulos ORDER BY fecha DESC') as $row) { // aca puedes hacer la consulta e iterarla con each. ?>
 			<tr>
 				<td>
-					<?php echo $row['titulo']// aca te faltaba poner los echo para que se muestre el valor de la variable.            ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo $row['fecha'] ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
+					<h2><a href="./verPost.html"><?php echo $row['titulo'] ?></a></h2>
+					<?php echo $row['fecha'] ?><br>
 					<?php echo $row['texto'] ?>
 				</td>
 			</tr>
 			<!--Lo siguiente es para dar espacio entre las lineas-->
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
 			<?php
 }
 ?>
@@ -87,6 +79,7 @@ $link = new PDO('mysql:host=localhost;dbname=G1Blog', 'root', ''); // el campo v
 			if (passwd == "?" && usuario == "?") {
 				return true;
 			} else {
+				alert("Usuario y/o contraseña no validoss");
 				return console.log(false);
 			}
 		}
