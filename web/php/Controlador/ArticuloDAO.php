@@ -8,7 +8,7 @@ class ArticuloDAO implements iArticulo{
    private $sqlUPDATE="UPDATE articulos SET texto=?, valoracion=?, categoria=?, publicado=? WHERE id=?";
    private $sqlINSERT="INSERT INTO articulos (fecha,texto,id_autor,valoracion,categoria,publicado) VALUES (?,?,?,?,?,?)";  
    private $sqlDELETE=" DELETE FROM articulos WHERE id=?";
-   private $sqlSELECTByDATE="SELECT * FROM articulos WHERE fecha>=?";
+   private $sqlSELECTByDATE="SELECT * FROM articulos WHERE fecha>=";
 
    public function __construct()
    {
@@ -103,9 +103,11 @@ class ArticuloDAO implements iArticulo{
            
         $temp=[];//Variable para guardar y devolver la lista de articulos que salga de la SELECT
         $db=Conexion::getInstance();
-        $consulta=$db->prepare($this->sqlSELECTByDATE);
-        $consulta->bindParam(1,$fecha);
-        $listaArticulos=$consulta->execute();
+        $this->sqlSELECTByDATE= $this->sqlSELECTByDATE."'".$fecha."'";
+        /*$consulta=$db->prepare($this->sqlSELECTByDATE);
+        $consulta->bindParam(1,$fecha1);*/
+        echo $this->sqlSELECTByDATE;
+        $listaArticulos=$db->query($this->sqlSELECTByDATE);
        while($articuloTemp=$listaArticulos->fetch())
         {            
             $articulo= new articuloDTO();
@@ -119,6 +121,10 @@ class ArticuloDAO implements iArticulo{
             array_push($temp,$articulo);
         }
         return $articuloTemp;
+    }
+
+    public function selectBY($nombre, $email, $fecha) {
+       echo "hola hola"; 
     }
 
 }

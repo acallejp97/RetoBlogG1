@@ -1,6 +1,8 @@
 <?php
-include_once 'Controlador/comentariosDTO.php';
-include_once 'Modelo/iComentario.php';
+/*include_once 'Controlador/comentariosDTO.php';
+include_once 'Modelo/iComentario.php';*/
+   include_once '../php/Controlador/comentariosDTO.php';
+   include_once '../php/Modelo/iComentario.php';
 
 /**
  * Description of ComentarioDAO
@@ -10,9 +12,11 @@ include_once 'Modelo/iComentario.php';
 class ComentarioDAO //implements iComentario
 {
     private $sqlALL = "SELECT * FROM comentarios";
-    private $sqlByID = "SELECT * FROM comentarios WHERE id=";
-    private $sqlUPDATE = "UPDATE comentarios SET comentario=?, fecha=?, id_articulos=?, id_usuario=? WHERE id=?";
-    private $sqlINSERT = "INSERT INTO comentarios (comentario,fecha,id_articulos,id_usuario) VALUES (?,?,?,?)";
+    private $sqlByID = "SELECT * FROM comentarios WHERE id_articulos=";
+    private $sqlUPDATE = "UPDATE comentarios SET texto=?, fecha=?, id_articulos=?, id_usuario=? WHERE id=?";
+   //  private $sqlUPDATE = "UPDATE comentarios SET comentario=?, fecha=?, id_articulos=?, id_usuario=? WHERE id=?";
+    private $sqlINSERT = "INSERT INTO comentarios (texto,fecha,id_articulos,id_usuario) VALUES (?,?,?,?)";
+    //private $sqlINSERT = "INSERT INTO comentarios (comentario,fecha,id_articulos,id_usuario) VALUES (?,?,?,?)";
     private $sqlDELETE = " DELETE FROM comentarios WHERE id=?";
     //Borra un comentario de la base de datos. Devuelve el número de filas afectadas
     public function delete($idComentario, $idArticulo, $idUsuario)
@@ -33,7 +37,7 @@ class ComentarioDAO //implements iComentario
         while ($comentarioTemp = $listaComentarios->fetch()) {
             $comentario = new comentariosDTO();
             $comentario->setIdComentario($comentarioTemp["id"]);
-            $comentario->setComentario($comentarioTemp["comentario"]);
+            $comentario->setComentario($comentarioTemp["texto"]);
             $comentario->setFecha($comentarioTemp["fecha"]);
             $comentario->setIdArticulo($comentarioTemp["id_articulos"]);
             $comentario->setIdAutor($comentarioTemp["id_usuario"]);
@@ -74,25 +78,28 @@ class ComentarioDAO //implements iComentario
     }
 
     //Selecciona un comentario por el identificador
-    public function selectBYID($idComentario, $idUsuario)
+    public function selectBYID($idComentario, $idArticulo)
     {
-      $this->sqlByID=$this->sqlByID.$idComentario;
+      $listaComentarios=[];
+      /*Creamos la consulta, conseguimos una instancia de la conexión y 
+       * ejecutamos la sentnecia*/
+      $this->sqlByID=$this->sqlByID.$idArticulo;
       $db= Conexion::getInstance();
-           
       $comentario=$db->query($this->sqlByID);
-     /* $consulta->bindParam(1, $idComentario);
-      $comentario=$consulta->execute();*/
+     /* Con lo que ha devuelto la BD creamos una lista de  objetos comentariosDTO
+        y lo mandamos fuera      */
       $comentarioDto = new comentariosDTO();
-      if($comentario1=$comentario->fetch())
+      while($comentario1=$comentario->fetch())
       {               
         $comentarioDto->setIdComentario($comentario1["id"]);
-        $comentarioDto->setComentario($comentario1["comentario"]);
+        $comentarioDto->setComentario($comentario1["comentario"]); //setComentario($comentario1["comentario"]);
         $comentarioDto->setFecha($comentario1["fecha"]);
         $comentarioDto->setIdArticulo($comentario1["id_articulos"]);
         $comentarioDto->setIdAutor($comentario1["id_usuario"]);
+        array_push($listaComentarios,$comentarioDto);
+        $comentarioDto=new comentariosDTO();
       }
-      echo $comentarioDto->toString();
-      return $comentarioDto;
+      return $listaComentarios;
       
     }
 

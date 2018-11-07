@@ -1,23 +1,25 @@
 <?php
-    include_once 'Controlador/usuariosDTO.php';
-    include_once 'Modelo/iUsuario.php';
-   // include_once 'Conexion\Conexion.php';
+  /* include_once 'C:\wamp64\www\RetoBlogG1\web\php\Controlador\usuarioDTO.php';
+   include_once 'C:\wamp64\www\RetoBlogG1\web\php\Modelo\iUsuario.php';
+   include_once 'C:\wamp64\www\RetoBlogG1\web\php\Conexion\Conexion.php';*/
+   include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1L/web/php/Controlador/usuarioDTO.php';
+   include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1L/web/php/Modelo/iUsuario.php';
+   include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1L/web/php/Conexion/Conexion.php';
 	class UsuarioDAO implements iUsuario
 	{		
 		private $sqlALL="SELECT * FROM usuarios";	
-		private $sqlByID="SELECT permisos FROM usuarios WHERE id=?";
 		private $sqlUPDATE="UPDATE usuarios SET nombre=?, email=? WHERE id=?";
 		private $sqlINSERT="INSERT INTO usuarios (nombre,password,email,permisos) VALUES (?,?,?,?)";  
 		private $sqlDELETE=" DELETE FROM usuarios WHERE id=? AND (id=? OR id=?)";
 		//Devuelve todos los usuarios de la tabla en un array de objetos usuariosDTO
 		public function selectALL()	
 		{
-            $temp=[]; //array en el que guardamos los objetos usuarios
+                        $temp=[]; //array en el que guardamos los objetos usuarios
 			$db= Conexion::getInstance();
 			$listaUsuarios=$db->query($this->sqlALL);
 			while($usuarioTemp=$listaUsuarios->fetch())
 			{
-				$usuario= new usuariosDTO();
+				$usuario= new usuarioDTO();
 				$usuario->setidUsuario($usuarioTemp["id"]);
 				$usuario->setNombre($usuarioTemp["nombre"]);
 				$usuario->setPwd($usuarioTemp["password"]);
@@ -27,6 +29,9 @@
 			}
 			return $temp;
 		}
+                
+                
+                
 		/*Devuelve un registro de la tabla que cumpla los criterios que le digamos. Devuelve array de objetos usuarioDTO con la lista de los usuarios que tienen el email que se pasa como parametro*/
 		public function selectByEMAIL($email)
 		{
@@ -95,19 +100,19 @@
         public function selectLogin($name, $pwd)
         {
             $sqlSelectLogin="SELECT * FROM usuarios WHERE nombre='".$name."' AND password='".$pwd."'";
-            $db=Conexion::getInstance();
+            $db= Conexion::getInstance();
            	//Utilizamos una consulta preparada
-			$listaUsuarios=$db->query($sqlSelectLogin);
-			while($usuarioTemp=$listaUsuarios->fetch())
-			{
-				$usuario=new usuariosDTO();
-				$usuario->setidUsuario($usuarioTemp["id"]);
-				$usuario->setNombre($usuarioTemp["nombre"]);
-				$usuario->setPwd($usuarioTemp["password"]);
-				$usuario->setEmail($usuarioTemp["email"]);
-				$usuario->setPermisos($usuarioTemp["permisos"]);
-			}
+	    $listaUsuarios=$db->query($sqlSelectLogin);
+	    if($usuarioTemp=$listaUsuarios->fetch())
+	     {
+		$usuario=new usuarioDTO();
+		$usuario->setidUsuario($usuarioTemp["id"]);
+		$usuario->setNombre($usuarioTemp["nombre"]);
+		$usuario->setPwd($usuarioTemp["password"]);
+		$usuario->setEmail($usuarioTemp["email"]);
+		$usuario->setPermisos($usuarioTemp["permisos"]);
+             }
              return $usuario;
         }
-            }
+    }
 ?>
