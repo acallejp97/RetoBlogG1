@@ -10,10 +10,12 @@ function validacionTexto(texto) {
 //Validamos si la fecha introducida es anterior al dia de hoy
 function validarFechaProgramada(fecha) {
   var fechaHoy = new Date();
+  var validar= true;
   if (fechaHoy <= fecha.getElementById("").value) {
     alert("La fecha introducida no es valida");
-    return false;
-  } else return true;
+    validar=false;
+  }
+  return validar;
 }
 
 function formatearFecha(fecha) {

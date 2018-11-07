@@ -26,6 +26,7 @@ class ArticuloDAO implements iArticulo{
     
     //Selecciona todos los registros de la base de datos
     public function selectALL() {
+        echo "Entra en selectALL";
         $temp=[];
         $db= Conexion::getInstance();
         $listaArticulos=$db->query($this->sqlALL);
