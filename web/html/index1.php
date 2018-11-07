@@ -46,9 +46,7 @@ if (isset($_SESSION)) {
 	<?php
 if (isset($_SESSION["usuario"])) {
     $usuario = $_SESSION["usuario"];
-    foreach ($usuario as $usuario1) {
-        echo "El Id de usuario es: " . $usuario1["idUsuario"] . " Y su nombre es " . $usuario1["nombre"];
-    }
+    //echo $usuario["idUsuario"] . " " . $usuario["nombre"];
 }
 
 if (isset($_SESSION["listaArticulos"])) {

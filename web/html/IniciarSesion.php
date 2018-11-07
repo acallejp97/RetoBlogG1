@@ -9,6 +9,8 @@ $pwd = $_POST["password"];
 $usuarioDto = new usuarioDTO();
 $usuarioControl = new UsuarioController();
 $usuarioDto = $usuarioControl->login($usuario, $pwd);
+$usuario = ["idUsuario" => $usuarioDto->getIdUsuario(),
+    "nombre" => $usuarioDto->getNombre()];
 $_SESSION["usuario"] = $usuarioDto;
 echo $usuarioDto->toString();
-header('Location: index1.php');
+//header('Location: index1.php');
