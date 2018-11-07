@@ -1,8 +1,17 @@
 <?php
         /* include_once 'C:\wamp64\www\RetoBlogG1\web\php\Modelo\UsuarioDAO.php';
           include_once 'C:\wamp64\www\RetoBlogG1\web\php\Controlador\usuarioDTO.php';*/
+<<<<<<< HEAD
        include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Modelo/UsuarioDAO.php';
 	   include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Controlador/usuarioDTO.php';
+=======
+		  
+		//   include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Modelo/UsuarioDAO.php';
+		//   include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Controlador/usuarioDTO.php';
+		  
+		  include_once '../Modelo/UsuarioDAO.php';
+		  include_once './usuarioDTO.php';
+>>>>>>> fa2f82abc23e0a20d81c2adc9cc2c5c22d011022
 	class UsuarioController 
 	{
 		private $usuarioDao;

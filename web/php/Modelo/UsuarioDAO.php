@@ -1,9 +1,20 @@
 <?php
  // include_once 'C:\wamp64\www\RetoBlogG1\web\php\Controlador\usuarioDTO.php';
  // include_once 'C:\wamp64\www\RetoBlogG1\web\php\Modelo\iUsuario.php';
+<<<<<<< HEAD
     include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Controlador/usuarioDTO.php';
    include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Modelo/iUsuario.php';
    include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Conexion/Conexion.php';
+=======
+ 
+//  include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Controlador/usuarioDTO.php';
+//  include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Modelo/iUsuario.php';
+//  include_once '/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Conexion/Conexion.php';
+ 
+ include_once "../Controlador/usuarioDTO.php";
+ include_once "./iUsuario.php";
+ include_once "../Conexion/Conexion.php";
+>>>>>>> fa2f82abc23e0a20d81c2adc9cc2c5c22d011022
 	class UsuarioDAO implements iUsuario
 	{		
 		private $sqlALL="SELECT * FROM usuarios";	
