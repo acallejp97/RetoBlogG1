@@ -12,4 +12,4 @@ $usuarioDto = new usuarioDTO();
 $usuarioControl = new UsuarioController();
 $usuarioDto = $usuarioControl->login($usuario, $pwd);
 $_SESSION["usuario"] = $usuarioDto;
-header("Location: C:\wamp64\www\RetoBlogG1\html\index1.php");
+header("Location: " . RAIZ_APLICACION . "/index1.php");

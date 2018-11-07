@@ -37,7 +37,7 @@ include_once RAIZ_APLICACION . '/../php/Vista/Vista.php';
 	</article>
 
 	<header id="initSesion">
-            <form action="/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Vista/IniciarSesion.php" method="post">
+            <form action="../php/Vista/IniciarSesion.php" method="post">
 
 			<label>Usuario :</label> <input type="text" name="usuario" />
 			<label>Password :</label> <input type="password" name="password" />
