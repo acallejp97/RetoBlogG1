@@ -1,7 +1,7 @@
 <?php
-include_once RAIZ_APLICACION . "/Controlador/usuarioDTO.php";
-include_once RAIZ_APLICACION . "/Modelo/iUsuario.php";
-include_once RAIZ_APLICACION . "/Conexion/Conexion.php";
+include_once RAIZ_APLICACION . "/../php/Controlador/usuarioDTO.php";
+include_once RAIZ_APLICACION . "/../php/Modelo/iUsuario.php";
+include_once RAIZ_APLICACION . "/../php/Conexion/Conexion.php";
 class UsuarioDAO implements iUsuario
 {
     private $sqlALL = "SELECT * FROM usuarios";
@@ -95,7 +95,7 @@ class UsuarioDAO implements iUsuario
         //Utilizamos una consulta preparada
         $listaUsuarios = $db->query($sqlSelectLogin);
         if ($usuarioTemp = $listaUsuarios->fetch()) {
-            $usuario = new usuariosDTO();
+            $usuario = new usuarioDTO();
             $usuario->setidUsuario($usuarioTemp["id"]);
             $usuario->setNombre($usuarioTemp["nombre"]);
             $usuario->setPwd($usuarioTemp["password"]);

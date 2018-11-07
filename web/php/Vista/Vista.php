@@ -1,12 +1,10 @@
 <?php
-define('RAIZ_APLICACION', dirname(__FILE__));
-
-include_once RAIZ_APLICACION . '../php/Controlador/ArticuloControler.php';
-include_once RAIZ_APLICACION . '../php/Controlador/ComentarioControler.php';
-include_once RAIZ_APLICACION . '../php/Controlador/comentariosDTO.php';
-include_once RAIZ_APLICACION . '../php/Controlador/articuloDTO.php';
-include_once RAIZ_APLICACION . '../php/Controlador/usuarioDTO.php';
-include_once RAIZ_APLICACION . '../php/Controlador/UsuarioControler.php';
+include_once RAIZ_APLICACION . '/../php/Controlador/ArticuloControler.php';
+include_once RAIZ_APLICACION . '/../php/Controlador/ComentarioControler.php';
+include_once RAIZ_APLICACION . '/../php/Controlador/comentariosDTO.php';
+include_once RAIZ_APLICACION . '/../php/Controlador/articuloDTO.php';
+include_once RAIZ_APLICACION . '/../php/Controlador/usuarioDTO.php';
+include_once RAIZ_APLICACION . '/../php/Controlador/UsuarioControler.php';
 
 class Vista
 {

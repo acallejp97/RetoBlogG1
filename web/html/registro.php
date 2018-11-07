@@ -5,10 +5,9 @@ session_start();
 
 <html lang="">
 <?php
- include RAIZ_APLICACION . "/../php/Controlador/UsuarioControler.php";
- 
+include RAIZ_APLICACION . "/../php/Controlador/UsuarioControler.php";
 $usuario = $_POST["usuario"];
-$email = $_POST["email"]
+$email = $_POST["email"];
 $pwd = $_POST["password"];    
 
 ?>
@@ -23,13 +22,13 @@ $pwd = $_POST["password"];
 <body>
     <section>
         <form action="../php/Controlador/UsuarioControler.php" method="POST">
-            Nombre de usuario<input type="text" id="usuario" />
+            Nombre de usuario : <input type="text" id="usuario" />
             <br><br>
-            E-mail<input type="email" id="email" />
+            E-mail : <input type="email" id="email" />
             <br><br>
-            Contraseña<input type="password" id="password" />
+            Contraseña : <input type="password" id="password" />
             <br><br>
-            Repetir contraseña<input type="password" id="confirmarpassword" />
+            Repetir contraseña : <input type="password" id="confirmarpassword" />
             <br><br>
             <input type="button" value="Crear usuario" onclick="onClickPulsado()" name="Crear usuario">
         </form>

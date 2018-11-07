@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="UTF-8">
 
@@ -8,14 +11,21 @@
 	<title>G1Blog</title>
 	<link rel="stylesheet" href="css/main.css">
 	<?php
-include '../php/Conexion/Conexion.php';
-include '../php/Controlador/UsuarioControler.php';
-include '../php/Controlador/ArticuloControler.php';
-include '../php/Controlador/ComentarioControler.php';
-include_once '../php/Controlador/usuarioDTO.php';
-include_once '../php/Controlador/articuloDTO.php';
-include_once '../php/Controlador/comentariosDTO.php';
-include_once '../php/Vista/Vista.php';
+define('RAIZ_APLICACION', dirname(__FILE__));
+
+include RAIZ_APLICACION . '/../php/Conexion/Conexion.php';
+include RAIZ_APLICACION . '/../php/Controlador/UsuarioControler.php';
+include RAIZ_APLICACION . '/../php/Controlador/ArticuloControler.php';
+include RAIZ_APLICACION . '/../php/Controlador/ComentarioControler.php';
+include_once RAIZ_APLICACION . '/../php/Controlador/usuarioDTO.php';
+include_once RAIZ_APLICACION . '/../php/Controlador/articuloDTO.php';
+include_once RAIZ_APLICACION . '/../php/Controlador/comentariosDTO.php';
+include_once RAIZ_APLICACION . '/../php/Vista/Vista.php';
+
+if (isset($_SESSION)) {
+    $vista = new Vista();
+}
+
 ?>
 </head>
 
@@ -33,9 +43,19 @@ include_once '../php/Vista/Vista.php';
             </p>
         </aside>
 	</article>
+	<?php
+if (isset($_SESSION["usuario"])) {
+    $usuario = $_SESSION["usuario"];
+    //echo $usuario["idUsuario"] . " " . $usuario["nombre"];
+}
 
+if (isset($_SESSION["listaArticulos"])) {
+    echo "Hay lista de articulos";
+}
+
+?>
 	<header id="initSesion">
-            <form action="/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Vista/IniciarSesion.php" method="post">
+            <form action="IniciarSesion.php" method="post">
 
 			<label>Usuario :</label> <input type="text" name="usuario" />
 			<label>Password :</label> <input type="password" name="password" />
@@ -55,9 +75,7 @@ include_once '../php/Vista/Vista.php';
 
 	<section>
 		<?php
-$vista = new Vista();
 echo $vista->mostrarContenido();
-$usuarioCont = new UsuarioController();
 ?>
 
 	</section>
