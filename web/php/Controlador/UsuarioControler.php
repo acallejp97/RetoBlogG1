@@ -1,8 +1,8 @@
 <?php
 define('RAIZ_APLICACION', dirname(__FILE__));
 
-include_once RAIZ_APLICACION . "../Modelo/UsuarioDAO.php";
-include_once RAIZ_APLICACION . "./usuarioDTO.php";
+include_once RAIZ_APLICACION . "/Modelo/UsuarioDAO.php";
+include_once RAIZ_APLICACION . "/Controlador/usuarioDTO.php";
 class UsuarioController
 {
     private $usuarioDao;

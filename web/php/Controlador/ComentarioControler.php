@@ -1,6 +1,7 @@
 <?php 
 	include_once RAIZ_APLICACION . '/Modelo/ComentarioDAO.php';
     include_once RAIZ_APLICACION . '/Controlador/comentariosDTO.php';
+
  	class ComentarioControler
  	{
  		private $comentarioDao;

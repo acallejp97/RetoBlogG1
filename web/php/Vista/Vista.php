@@ -1,5 +1,4 @@
 <?php
-
 define('RAIZ_APLICACION', dirname(__FILE__));
 
 include_once RAIZ_APLICACION . '../php/Controlador/ArticuloControler.php';

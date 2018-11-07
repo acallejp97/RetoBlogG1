@@ -2,6 +2,7 @@
  include_once RAIZ_APLICACION . "/Controlador/articuloDTO.php";
  include_once RAIZ_APLICACION . "/Modelo/iArticulo.php";
 
+
 class ArticuloDAO implements iArticulo{
    private $sqlALL="SELECT * FROM articulos ORDER BY fecha";		
    private $sqlByID="SELECT * FROM articulos WHERE id=";

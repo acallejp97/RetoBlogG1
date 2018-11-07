@@ -2,7 +2,7 @@
 
 class Conexion
 {
-    private $db = "G1Reto";
+    private $db = "G1Blog";
     private $servidor = "mysql:host=127.0.0.1;dbname=";
     private $username = "root";
     private $password = "";
