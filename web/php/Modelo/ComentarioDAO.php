@@ -1,6 +1,6 @@
 <?php
-include_once RAIZ_APLICACION . "/Controlador/comentariosDTO.php";
-include_once RAIZ_APLICACION . "/Modelo/iComentario.php";
+include_once RAIZ_APLICACION . "/../php/Controlador/comentariosDTO.php";
+include_once RAIZ_APLICACION . "/../php/Modelo/iComentario.php";
 
 /**
  * Description of ComentarioDAO

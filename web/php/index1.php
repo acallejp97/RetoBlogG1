@@ -12,12 +12,12 @@ include (BASE_PATH . '/config/config.php');
        <?php
 define('RAIZ_APLICACION', dirname(__FILE__));
 
-include RAIZ_APLICACION . "/Conexion/Conexion.php";
-include RAIZ_APLICACION . "/Modelo/UsuarioControler.php";
-include RAIZ_APLICACION . "/Modelo/ArticuloDAO.php";
-include_once RAIZ_APLICACION . "/Modelo/UsuarioDAO.php";
-include RAIZ_APLICACION . "/Controlador/ArticuloControler.php";
-include_once RAIZ_APLICACION . "/Controlador/articuloDTO.php";
+include RAIZ_APLICACION . "/../php/Conexion/Conexion.php";
+include RAIZ_APLICACION . "/../php/Modelo/UsuarioControler.php";
+include RAIZ_APLICACION . "/../php/Modelo/ArticuloDAO.php";
+include_once RAIZ_APLICACION . "/../php/Modelo/UsuarioDAO.php";
+include RAIZ_APLICACION . "/../php/Controlador/ArticuloControler.php";
+include_once RAIZ_APLICACION . "/../php/Controlador/articuloDTO.php";
 
 /* Pruebas con la tabla de Articulos */
 $usuarioDao = new UsuarioDAO();

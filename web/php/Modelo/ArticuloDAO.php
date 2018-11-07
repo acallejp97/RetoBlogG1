@@ -1,6 +1,6 @@
 <?php
-include_once RAIZ_APLICACION . "/Controlador/articuloDTO.php";
-include_once RAIZ_APLICACION . "/Modelo/iArticulo.php";
+include_once RAIZ_APLICACION . "/../php/Controlador/articuloDTO.php";
+include_once RAIZ_APLICACION . "/../php/Modelo/iArticulo.php";
 
 class ArticuloDAO implements iArticulo
 {
