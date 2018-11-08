@@ -20,10 +20,10 @@ class Vista
         $listaArticulos = $articuloControlador->buscarTodosArticulos();
         $articuloDto = new articuloDTO();
         foreach ($listaArticulos as $articuloDto) {
-            $this->salida = $this->salida . "<article><h3>" . $articuloDto->getTitulo() . "</h3>";
+            $this->salida = $this->salida . "<article><h3><a id=\"" . $articuloDto->getIdArticulo() . "\" href=\"../html/verPost.html\" >" . $articuloDto->getTitulo() . " </a></h3>";
             $this->salida = $this->salida . "<p>" . $articuloDto->getFecha() . "</p>";
             $this->salida = $this->salida . "<p>" . $articuloDto->getTexto() . "</p>";
-            $comentario = $this->mostrarComentarios($articuloDto->getIdArticulo());
+            $comentario = $this->mostrarComentarioslink($articuloDto->getIdArticulo());
             if ($comentario != "<h4>Comentarios</h4>") {
                 $this->salida = $this->salida . $comentario;
             }
