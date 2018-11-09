@@ -11,8 +11,7 @@ $pwd = $_POST["password"];
 $usuarioDto = new usuarioDTO();
 $usuarioControl = new UsuarioController();
 $usuarioDto = $usuarioControl->login($usuario, $pwd);
-if(isset($usuarioDto))
-{
+if(isset($usuarioDto)){
 	$usuario=["IdUsuario"=>$usuarioDto->getIdUsuario(),
 	          "nombre"=>$usuarioDto->getnombre(),
 			  "password"=>$usuarioDto->getPwd(),
