@@ -34,7 +34,7 @@ class Vista
         foreach ($listaArticulos as $articuloDto) {
             if($articuloDto->getPublicado()==true)
             {
-                $this->salida = $this->salida . "<article><h3><a id=\"" . $articuloDto->getIdArticulo() . "\" href=\"../html/verPost.html\" >" . $articuloDto->getTitulo() . " </a></h3>";
+                $this->salida = $this->salida . "<article><h3><a id=\"" . $articuloDto->getIdArticulo() . "\" href=\"../html/verPost.php\" >" . $articuloDto->getTitulo() . " </a></h3>";
                 $this->salida = $this->salida . "<p>" . $articuloDto->getFecha() . "</p>";
                 $this->salida = $this->salida . "<p>" . $articuloDto->getTexto() . "</p>";
                 $comentario = $this->mostrarComentarios($articuloDto->getIdArticulo());
