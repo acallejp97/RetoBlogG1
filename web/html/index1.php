@@ -74,7 +74,18 @@ if (isset($_SESSION["listaArticulos"])) {
 
 	<section>
 		<?php
-echo $vista->mostrarContenido();
+$listadoArticulos = [];
+if (isset($_SESSION["listaArticulos"])) {
+    $listaArticulos = $_SESSION["listaArticulos"];
+    foreach ($listaArticulos as $articulo) {
+        $articulo1 = $articuloDao->trasformObjetcDto($articulo);
+        // echo $articulo1->toString();
+        array_push($listadoArticulos, $articulo1);
+    }
+    echo $vista->mostrarContenido($listadoArticulos);
+} else {
+    echo $vista->mostrarContenido("");
+}
 ?>
 
 	</section>
