@@ -11,12 +11,11 @@ $pwd = $_POST["password"];
 $usuarioDto = new usuarioDTO();
 $usuarioControl = new UsuarioController();
 $usuarioDto = $usuarioControl->login($usuario, $pwd);
-if(isset($usuarioDto)
-{
-	$usuario=["IdUsuario"=>$usuarioDto->getIdUsuario()
-	          "nombre"=>$usuarioDto->getnombre()
-			  "password"=>$usuarioDto->getPwd()
-			  "email"=>$usuarioDto->getEmail()
+if(isset($usuarioDto)){
+	$usuario=["IdUsuario"=>$usuarioDto->getIdUsuario(),
+	          "nombre"=>$usuarioDto->getnombre(),
+			  "password"=>$usuarioDto->getPwd(),
+			  "email"=>$usuarioDto->getEmail(),
 			  "permisos"=>$usuarioDto->getPermisos()
 			];
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
@@ -21,9 +21,11 @@ include_once RAIZ_APLICACION . '/../php/Controlador/usuarioDTO.php';
 include_once RAIZ_APLICACION . '/../php/Controlador/articuloDTO.php';
 include_once RAIZ_APLICACION . '/../php/Controlador/comentariosDTO.php';
 include_once RAIZ_APLICACION . '/../php/Vista/Vista.php';
-include_once RAIZ_APLICACION . '/../php/Modelo/ArticuloDAO.php';
-$vista=new Vista();
-$articuloDao=new ArticuloDAO();  
+
+if (isset($_SESSION)) {
+    $vista = new Vista();
+}
+
 ?>
 </head>
 
@@ -41,9 +43,20 @@ $articuloDao=new ArticuloDAO();
             </p>
         </aside>
 	</article>
-	
+	<?php
+if (isset($_SESSION["usuario"])) {
+    $usuario = $_SESSION["usuario"];
+    //echo $usuario["idUsuario"] . " " . $usuario["nombre"];
+}
+
+if (isset($_SESSION["listaArticulos"])) {
+    echo "Hay lista de articulos";
+}
+
+?>
 	<header id="initSesion">
             <form action="IniciarSesion.php" method="post">
+
 			<label>Usuario :</label> <input type="text" name="usuario" />
 			<label>Password :</label> <input type="password" name="password" />
 			<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
@@ -61,22 +74,8 @@ $articuloDao=new ArticuloDAO();
 
 	<section>
 		<?php
-                $listadoArticulos=[];
-                 if(isset($_SESSION["listaArticulos"]))
-                    {
-                          $listaArticulos=$_SESSION["listaArticulos"];
-                          foreach ($listaArticulos as $articulo)
-                          {
-                              $articulo1=$articuloDao->trasformObjetcDto($articulo);
-                            // echo $articulo1->toString();
-                              array_push($listadoArticulos,$articulo1);
-                          }
-                        echo $vista->mostrarContenido($listadoArticulos);
-                    }
-                   else {
-			echo $vista->mostrarContenido("");
-                   }
-		?>
+echo $vista->mostrarContenido();
+?>
 
 	</section>
 	<script>
