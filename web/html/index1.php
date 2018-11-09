@@ -21,6 +21,9 @@ include_once RAIZ_APLICACION . '/../php/Controlador/usuarioDTO.php';
 include_once RAIZ_APLICACION . '/../php/Controlador/articuloDTO.php';
 include_once RAIZ_APLICACION . '/../php/Controlador/comentariosDTO.php';
 include_once RAIZ_APLICACION . '/../php/Vista/Vista.php';
+include_once RAIZ_APLICACION . '/../php/Modelo/ArticuloDAO.php';
+$vista = new Vista();
+$articuloDao = new ArticuloDAO();
 
 if (isset($_SESSION)) {
     $vista = new Vista();
