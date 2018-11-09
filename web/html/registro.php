@@ -2,7 +2,7 @@
 
 <html lang="">
 <?php
- include;
+ include '';
 ?>
 <head>
     <meta charset="UTF-8">

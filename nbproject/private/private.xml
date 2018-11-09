@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/RetoBlogG1/web/html/BuscarCustom.php</file>
-            <file>file:/C:/wamp64/www/RetoBlogG1/web/html/IniciarSesion.php</file>
-            <file>file:/C:/wamp64/www/RetoBlogG1/web/php/Controlador/ArticuloDAO.php</file>
-            <file>file:/C:/wamp64/www/RetoBlogG1/web/php/Vista/Vista.php</file>
-            <file>file:/C:/wamp64/www/RetoBlogG1/web/php/Controlador/ArticuloControler.php</file>
-            <file>file:/C:/wamp64/www/RetoBlogG1/web/html/index1.php</file>
+            <file>file:/C:/wamp64/www/RetoBlogG1L/web/php/Modelo/ComentarioDAO.php</file>
+            <file>file:/C:/wamp64/www/RetoBlogG1L/web/html/LimpiarSelectioDate.php</file>
+            <file>file:/C:/wamp64/www/RetoBlogG1L/web/html/index1.php</file>
+            <file>file:/C:/wamp64/www/RetoBlogG1L/web/php/Vista/Vista.php</file>
+            <file>file:/C:/wamp64/www/RetoBlogG1L/web/html/BuscarCustom.php</file>
+            <file>file:/C:/wamp64/www/RetoBlogG1L/web/php/Modelo/ArticuloDAO.php</file>
         </group>
     </open-files>
 </project-private>

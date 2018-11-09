@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="UTF-8">
 
@@ -18,6 +21,9 @@ include_once RAIZ_APLICACION . '/../php/Controlador/usuarioDTO.php';
 include_once RAIZ_APLICACION . '/../php/Controlador/articuloDTO.php';
 include_once RAIZ_APLICACION . '/../php/Controlador/comentariosDTO.php';
 include_once RAIZ_APLICACION . '/../php/Vista/Vista.php';
+include_once RAIZ_APLICACION . '/../php/Modelo/ArticuloDAO.php';
+$vista=new Vista();
+$articuloDao=new ArticuloDAO();  
 ?>
 </head>
 
@@ -30,18 +36,16 @@ include_once RAIZ_APLICACION . '/../php/Vista/Vista.php';
                     <label>Fecha<label><input type="date" name="fecha" />
                     <br><br>
                     <input type="submit" value="Buscar" name="Buscar">
-                    <input type="reset" value="Limpiar" name="Limpiar">
+                    <input type="reset" value="Limpiar" name="Limpiar" onclick="location='LimpiarSelectioDate.php'">
                 </form>
             </p>
         </aside>
 	</article>
-
+	
 	<header id="initSesion">
-            <form action="/home/ik_2dw3/Escritorio/WEBS/DWS/Victor/RetoBlogG1/web/php/Vista/IniciarSesion.php" method="post">
-
+            <form action="IniciarSesion.php" method="post">
 			<label>Usuario :</label> <input type="text" name="usuario" />
 			<label>Password :</label> <input type="password" name="password" />
-
 			<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
 		</form>
 
@@ -57,10 +61,22 @@ include_once RAIZ_APLICACION . '/../php/Vista/Vista.php';
 
 	<section>
 		<?php
-$vista = new Vista();
-echo $vista->mostrarContenido();
-$usuarioCont = new UsuarioController();
-?>
+                $listadoArticulos=[];
+                 if(isset($_SESSION["listaArticulos"]))
+                    {
+                          $listaArticulos=$_SESSION["listaArticulos"];
+                          foreach ($listaArticulos as $articulo)
+                          {
+                              $articulo1=$articuloDao->trasformObjetcDto($articulo);
+                            // echo $articulo1->toString();
+                              array_push($listadoArticulos,$articulo1);
+                          }
+                        echo $vista->mostrarContenido($listadoArticulos);
+                    }
+                   else {
+			echo $vista->mostrarContenido("");
+                   }
+		?>
 
 	</section>
 	<script>

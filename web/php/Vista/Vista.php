@@ -13,21 +13,36 @@ class Vista
     {
         $this->salida = "";
     }
-    public function mostrarContenido()
+    public function mostrarContenido($listadoArticulos)
     {
         $comentario = "";
-        $articuloControlador = new ArticuloControler();
-        $listaArticulos = $articuloControlador->buscarTodosArticulos();
+        $articuloDto=new articuloDTO();
+        /*Si recibimos la lista de articulos en un de seleccionar por fecha 
+         * array asociativo la convertimos en un array de objetos DTO y luego la
+         * mostramos
+        */
+        if($listadoArticulos!="")
+        {
+          $listaArticulos=$listadoArticulos;
+        }
+        else {
+             $articuloControlador = new ArticuloControler();
+             $listaArticulos = $articuloControlador->buscarTodosArticulos();
+        }
+        
         $articuloDto = new articuloDTO();
         foreach ($listaArticulos as $articuloDto) {
-            $this->salida = $this->salida . "<article><h3>" . $articuloDto->getTitulo() . "</h3>";
-            $this->salida = $this->salida . "<p>" . $articuloDto->getFecha() . "</p>";
-            $this->salida = $this->salida . "<p>" . $articuloDto->getTexto() . "</p>";
-            $comentario = $this->mostrarComentarios($articuloDto->getIdArticulo());
-            if ($comentario != "<h4>Comentarios</h4>") {
-                $this->salida = $this->salida . $comentario;
+            if($articuloDto->getPublicado()==true)
+            {
+                $this->salida = $this->salida . "<article><h3>" . $articuloDto->getTitulo() . "</h3>";
+                $this->salida = $this->salida . "<p>" . $articuloDto->getFecha() . "</p>";
+                $this->salida = $this->salida . "<p>" . $articuloDto->getTexto() . "</p>";
+                $comentario = $this->mostrarComentarios($articuloDto->getIdArticulo());
+                if ($comentario != "<h4>Comentarios</h4>") {
+                    $this->salida = $this->salida . $comentario;
+                }
+                $this->salida = $this->salida . "</article>";
             }
-            $this->salida = $this->salida . "</article>";
             $articuloDto = new articuloDTO();
         }
 
