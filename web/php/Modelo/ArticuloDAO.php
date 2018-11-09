@@ -27,7 +27,7 @@ class ArticuloDAO implements iArticulo
         return $articulo;
     }
     //Borra un articulo de la base de datos
-    public function delete($idArticulo, $idOrder)
+    public function delete($idArticulo)
     {
         //Mirar si el execute devuelve algo para luego lanzar aviso en la parte de la vista.
         $db = Conexion::getInstance();
@@ -70,7 +70,7 @@ class ArticuloDAO implements iArticulo
     }
 
     //Actualiza un registro de la base de datos
-    public function update($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo, $idOrder)
+    public function update($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo)
     {
         //Falta titulo y categoría.
         $db = Conexion::getInstance();

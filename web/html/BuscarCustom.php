@@ -2,7 +2,7 @@
 session_start();
 define('RAIZ_APLICACION', dirname(__FILE__));
 
-include_once RAIZ_APLICACION . '/../php/Controlador/ArticuloControler.php';
+
 include_once RAIZ_APLICACION . '/../php/Controlador/articuloDTO.php';
 include_once RAIZ_APLICACION . '/../php/Conexion/Conexion.php';
 

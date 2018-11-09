@@ -5,9 +5,9 @@ interface iArticulo
     public function selectBYID($id); /*Saca los articulos filtrados por nombre del autor
     (o su email) y/o la fecha de publicación*/
     public function selectByFecha($fecha);
-    public function delete($idArticulo, $idOrder); /*Borra un articulo identificando si es el autor o el
+    public function delete($idArticulo); /*Borra un articulo identificando si es el autor o el
     administrador*/
-    public function update($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo, $idOrder); /*Actualiza el contenido del articulo (solo el autor o
+    public function update($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo); /*Actualiza el contenido del articulo (solo el autor o
     el administrador)*/
     public function insert($fecha, $texto, $idAutor, $valoracion, $categoria, $publicado);
 }
