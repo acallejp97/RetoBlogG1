@@ -23,7 +23,7 @@ class Vista
             $this->salida = $this->salida . "<article><h3><a id=\"" . $articuloDto->getIdArticulo() . "\" href=\"../html/verPost.html\" >" . $articuloDto->getTitulo() . " </a></h3>";
             $this->salida = $this->salida . "<p>" . $articuloDto->getFecha() . "</p>";
             $this->salida = $this->salida . "<p>" . $articuloDto->getTexto() . "</p>";
-            $comentario = $this->mostrarComentarioslink($articuloDto->getIdArticulo());
+            $comentario = $this->mostrarComentarios($articuloDto->getIdArticulo());
             if ($comentario != "<h4>Comentarios</h4>") {
                 $this->salida = $this->salida . $comentario;
             }
