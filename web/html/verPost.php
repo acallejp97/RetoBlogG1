@@ -1,3 +1,14 @@
+<?php
+$id_articulo = $_POST["id_post"];
+
+define('RAIZ_APLICACION', dirname(__FILE__));
+include_once RAIZ_APLICACION . '/../php/Modelo/ArticuloDAO.php';
+include_once RAIZ_APLICACION . '/../php/Vista/Vista.php';
+
+$articuloDAO = new articuloDAO();
+$vista = new Vista();
+
+?>
 <!DOCTYPE html>
 <html lang="">
 
@@ -41,11 +52,10 @@ if (isset($_SESSION["listaArticulos"])) {
     </header>
 
     <section>
-        <label id="TituloPost">asfas</label>
-        <br>
-        <label id="FechaPost">asfasf</label>
-        <br>
-        <p id="ContenidoPost">asfasfasfsf</p>
+    <?php
+
+echo $vista->mostrarUnicoArticulo($id_articulo);
+?>
         <form action="nose.php" method="POST">
             Texto <textarea name="ComentarioPost" id="ComentarioPost" cols="30" rows="10"></textarea>
             <br><br>

@@ -31,19 +31,41 @@ class Vista
         $articuloDto = new articuloDTO();
         foreach ($listaArticulos as $articuloDto) {
             if ($articuloDto->getPublicado() == true) {
-                $this->salida = $this->salida . "<article><form id=\"my_form\" action=\"IniciarSesion.php\" method=\"post\">";
-                $this->salida = $this->salida . "<h3> <a href=\"javascript:document.getElementById('my_form').submit();\" name=\"titulo\">" . $articuloDto->getTitulo() . " </a></h3>";
+                $this->salida = $this->salida . "<article><form action=\"../html/verPost.php\" method=\"post\">";
+                $this->salida = $this->salida . "<h3> <button type=\"submit\" value=\"titulo\" name=\"titulo\" class=\"btn-link\">" . $articuloDto->getTitulo() . " </button></h3>";
+                $this->salida = $this->salida . "<input type=\"hidden\" name=\"id_post\" value=\"" . $articuloDto->getIdArticulo() . "\" />";
                 $this->salida = $this->salida . "<label name=\"fecha\">" . $articuloDto->getFecha() . "</><br>";
                 $this->salida = $this->salida . "<label name=\"texto\">" . $articuloDto->getTexto() . "</>";
-                $comentario = $this->mostrarComentarios($articuloDto->getIdArticulo());
-                if ($comentario != "<h4>Comentarios</h4>") {
-                    $this->salida = $this->salida . $comentario;
-                }
+                // $comentario = $this->mostrarComentarios($articuloDto->getIdArticulo());
+                // if ($comentario != "<h4>Comentarios</h4>") {
+                //     $this->salida = $this->salida . $comentario;
+                // }
                 $this->salida = $this->salida . "</form>";
                 $this->salida = $this->salida . "</article>";
             }
             $articuloDto = new articuloDTO();
         }
+
+        return $this->salida;
+    }
+
+    public function mostrarUnicoArticulo($idArticulo)
+    {
+        $articuloControlador = new ArticuloControler();
+        $articuloDto = new articuloDTO();
+
+        $articuloDto = $articuloControlador->buscarArticuloPorId($idArticulo);
+        if ($articuloDto->getPublicado() == true) {
+            $this->salida = $this->salida . "<article> <h3 id=\"TituloPost\">" . $articuloDto->getTitulo() . "</h3><br/>";
+            $this->salida = $this->salida . "<label id=\"FechaPost\">" . $articuloDto->getFecha() . "</label><br/>";
+            $this->salida = $this->salida . "<p id=\"ContenidoPost\">" . $articuloDto->getTexto() . "</p>";
+            $comentario = $this->mostrarComentarios($articuloDto->getIdArticulo());
+            if ($comentario != "<h4>Comentarios</h4>") {
+                $this->salida = $this->salida . $comentario;
+            }
+            $this->salida = $this->salida . "</article>";
+        }
+        $articuloDto = new articuloDTO();
 
         return $this->salida;
     }
