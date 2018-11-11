@@ -10,16 +10,36 @@
 </head>
 
 <body>
-    <header>
-        <form action="nose.php" method="POST">
-            Usuario : <input type="text" id="usuario" />
-            Password : <input type="Password" id="password" />
-            <input type="submit" value="Loguear" name="Loguear">
-        </form>
-        <form action="registro.html" method="POST">
-            <input type="submit" value="Registrarse" name="Registrarse">
-        </form>
+</article>
+	<?php
+if (isset($_SESSION["usuario"])) {
+    $usuario = $_SESSION["usuario"];
+    //echo $usuario["idUsuario"] . " " . $usuario["nombre"];
+}
+
+if (isset($_SESSION["listaArticulos"])) {
+    echo "Hay lista de articulos";
+}
+
+?>
+	<header id="initSesion">
+            <form action="IniciarSesion.php" method="post">
+
+			<label>Usuario :</label> <input type="text" name="usuario" />
+			<label>Password :</label> <input type="password" name="password" />
+			<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
+		</form>
+
+		<form action="registro.html" method="POST">
+			<input type="submit" value="Registrarse" name="Registrarse">
+		</form>
+
+		<form action="nuevoPost.html" method="POST">
+			<input id="CrearPost" type="submit" value="Crear post" name="Crear post">
+		</form>
+
     </header>
+
     <section>
         <label id="TituloPost">asfas</label>
         <br>

@@ -106,6 +106,6 @@ class articuloDTO
 
     public function toString()
     {
-        return "<p><br>Id: " . $this->idArticulo . "<br>Fecha: " . $this->fecha . "<br>Texto: " . $this->texto . "<br> Publicado: " . $this->publicado . "</p>";
+        return "<p><br>Id: " . $this->idArticulo . "<br>Fecha: " . $this->fecha . "<br>Texto: " . $this->texto . "<br> Publicado: " . $this->publicado . "<br> Valoración: </p>".$this->valoracion;
     }
 }

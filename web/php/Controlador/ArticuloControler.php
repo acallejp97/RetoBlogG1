@@ -12,8 +12,6 @@ class ArticuloControler
 
     public function buscarTodosArticulos()
     {
-        echo "Entra en buscar todos los articulos<br>";
-        $temp = [];
         $temp = $this->articuloDao->selectALL();
         return $temp;
     }
@@ -32,7 +30,7 @@ class ArticuloControler
         return $temp;
     }
 
-    public function actualizarArticulo($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo, $idOrder)
+    public function actualizarArticulo($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo)
     {
         $temp = $this->articuloDao->update($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo, $idOrder);
         return $temp;
@@ -53,7 +51,6 @@ class ArticuloControler
 
     public function buscarCustom($nombre, $fecha)
     {
-        $temp = [];
         $temp = $this->buscarCustom($nombre, $fecha);
         return $temp;
     }

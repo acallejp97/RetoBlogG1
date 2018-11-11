@@ -11,12 +11,23 @@ class ArticuloDAO implements iArticulo
     private $sqlDELETE = " DELETE FROM articulos WHERE id=?";
     private $sqlSELECTByDATE = "SELECT * FROM articulos WHERE fecha>=";
     private $sqlCUSTOM = "SELECT * FROM articulos WHERE 1=1";
-    public function __construct()
+    
+    public function trasformObjetcDto($articuloTemp1)
     {
-
+       
+        $articulo = new articuloDTO();
+        $articulo->setIdArticulo($articuloTemp1["id"]);
+        $articulo->setTitulo($articuloTemp1["titulo"]);
+        $articulo->setFecha($articuloTemp1["fecha"]);
+        $articulo->setTexto($articuloTemp1["texto"]);
+        $articulo->setIdAutor($articuloTemp1["id_autor"]);
+        $articulo->setValoracion($articuloTemp1["valoracion"]);
+        $articulo->setIdCategoria($articuloTemp1["categoria"]);
+        $articulo->setPublicado($articuloTemp1["publicado"]);
+        return $articulo;
     }
     //Borra un articulo de la base de datos
-    public function delete($idArticulo, $idOrder)
+    public function delete($idArticulo)
     {
         //Mirar si el execute devuelve algo para luego lanzar aviso en la parte de la vista.
         $db = Conexion::getInstance();
@@ -34,16 +45,8 @@ class ArticuloDAO implements iArticulo
         $db = Conexion::getInstance();
         $listaArticulos = $db->query($this->sqlALL);
         while ($articuloTemp = $listaArticulos->fetch()) {
-            $articulo = new articuloDTO();
-            $articulo->setIdArticulo($articuloTemp["id"]);
-            $articulo->setTitulo($articuloTemp["titulo"]);
-            $articulo->setFecha($articuloTemp["fecha"]);
-            $articulo->setTexto($articuloTemp["texto"]);
-            $articulo->setIdAutor($articuloTemp["id_autor"]);
-            $articulo->setValoracion($articuloTemp["valoracion"]);
-            $articulo->setIdCategoria($articuloTemp["categoria"]);
-            $articulo->setPublicado($articuloTemp["publicado"]);
-            array_push($temp, $articulo);
+           $articulo=$this->trasformObjetcDto($articuloTemp);
+           array_push($temp, $articulo);
         }
         return $temp;
     }
@@ -60,33 +63,24 @@ class ArticuloDAO implements iArticulo
         $db = Conexion::getInstance();
         $listaArticulos = $db->query($this->sqlCUSTOM);
         while ($articuloTemp = $listaArticulos->fetch()) {
-            $articulo = new articuloDTO();
-            $articulo->setIdArticulo($articuloTemp["id"]);
-            $articulo->setTitulo($articuloTemp["titulo"]);
-            $articulo->setFecha($articuloTemp["fecha"]);
-            $articulo->setTexto($articuloTemp["texto"]);
-            $articulo->setIdAutor($articuloTemp["id_autor"]);
-            $articulo->setValoracion($articuloTemp["valoracion"]);
-            $articulo->setIdCategoria($articuloTemp["categoria"]);
-            $articulo->setPublicado($articuloTemp["publicado"]);
-            array_push($temp, $articulo);
+            $articulo1=trasformObjetcDto($articuloTemp);
+            array_push($temp, $articulo1);
         }
         return temp;
     }
 
     //Actualiza un registro de la base de datos
-    public function update($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo, $idOrder)
+    public function update($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo)
     {
         //Falta titulo y categoría.
         $db = Conexion::getInstance();
         $consulta = $db->prepare($this->sqlUPDATE);
         $consulta->bindParam(1, $texto);
         $consulta->bindParam(2, $valoracion);
-        $consulta->bindParam(3, $categoria);
+      //  $consulta->bindParam(3, $categoria);
         $consulta->bindParam(4, $publicado);
         $consulta->bindParam(5, $fecha);
         $consulta->bindParam(6, $idArticulo);
-        echo $this->sqlUPDATE;
         $temp = $consulta->execute();
         return $temp;
     }
@@ -111,38 +105,23 @@ class ArticuloDAO implements iArticulo
     public function selectBYID($id)
     {
         $db = Conexion::getInstance();
-        $temp = [];
+        
         $listaUsuarios = $db->query($this->sqlByID . $id);
-        while ($temp = $listaUsuarios->fetch()) {
-            $articuloDto = new ArticuloDTO();
-            $articuloDto->setIdArticulo($temp["id"]);
-            $articuloDto->setTexto($temp["texto"]);
-            $articuloDto->setIdAutor($temp["id_autor"]);
-            $articuloDto->setValoracion($temp["valoracion"]);
-            $articuloDto->setIdCategoria($temp["categoria"]);
-            $articuloDto->setPublicado($temp["publicado"]);
-            $articuloDto->setFecha($temp["fecha"]);
-            $articuloDto->toString();
+        while ($aticuloTemp = $listaUsuarios->fetch()) {
+           $articulo=trasformObjetcDto($articuloTemp);
         }
-        echo $articuloDto->toString();
-        return $articuloDto;
+        return $articulo;
     }
     //Devuelve los articulos en función a la fecha de publicación
     public function selectByFecha($fecha)
     {
+        
         $temp = []; //Variable para guardar y devolver la lista de articulos que salga de la SELECT
         $db = Conexion::getInstance();
-        $listaArticulos = $db->query($this->sqlSELECTByDATE . $fecha);
+        $this->sqlSELECTByDATE="SELECT * FROM articulos WHERE fecha>='$fecha'";
+        $listaArticulos=$db->query($this->sqlSELECTByDATE);
         while ($articuloTemp = $listaArticulos->fetch()) {
-            $articulo = new articuloDTO();
-            $articulo->setIdArticulo($articuloTemp["id"]);
-            $articulo->setFecha($articuloTemp["fecha"]);
-            $articulo->setTexto($articuloTemp["texto"]);
-            $articulo->setIdAutor($articuloTemp["id_autor"]);
-            $articulo->setValoracion($articuloTemp["valoracion"]);
-            $articulo->setIdCategoria($articuloTemp["categoria"]);
-            $articulo->setPublicado($articuloTemp["publicado"]);
-            //echo $articulo->toString();
+            $articulo=$this->trasformObjetcDto($articuloTemp);
             array_push($temp, $articulo);
         }
         return $temp;
