@@ -34,12 +34,20 @@ if (isset($_SESSION["listaArticulos"])) {
 
 ?>
 	<header id="initSesion">
-            <form action="IniciarSesion.php" method="post">
+        
+    <?php
+if (!isset($_SESSION["usuario"])) {
+    ?>
 
+            <form action="IniciarSesion.php" method="post">
 			<label>Usuario :</label> <input type="text" name="usuario" />
 			<label>Password :</label> <input type="password" name="password" />
 			<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
-		</form>
+        </form>
+
+        <?php
+}
+?>
 
 		<form action="registro.html" method="POST">
 			<input type="submit" value="Registrarse" name="Registrarse">
@@ -68,6 +76,19 @@ echo $vista->mostrarUnicoArticulo($id_articulo);
     <footer>
         <a href="index.html">Volver al inicio</a>
     </footer>
+    <script>
+		document.getElementById("CrearPost").style.visibility = "hidden";
+		function validarInicio() {
+			var usuario = document.getElementById("usuario").value;
+			var passwd = document.getElementById("password").value;
+
+			if (passwd == "?" && usuario == "?") {
+				return true;
+			} else {
+				return console.log(false);
+			}
+		}
+	</script>
 </body>
 
 </html>
