@@ -65,7 +65,7 @@ if (isset($_SESSION["listaArticulos"])) {
 			<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
 		</form>
 
-		<form action="registro.html" method="POST">
+		<form action="registro.php" method="POST">
 			<input type="submit" value="Registrarse" name="Registrarse">
 		</form>
 
