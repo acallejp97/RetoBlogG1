@@ -1,5 +1,5 @@
 <?php
-	session_start();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +55,7 @@ if (isset($_SESSION["usuario"])) {
 }
 
 /*if (isset($_SESSION["listaArticulos"])) {
-    echo "Hay lista de articulos";
+echo "Hay lista de articulos";
 }*/
 
 ?>
@@ -74,16 +74,14 @@ if (!isset($_SESSION["usuario"])) {
 			<input type="submit" value="Registrarse" name="Registrarse">
 		</form>
 			<?php
-} 
-else
-{
+} else {
 
     ?>
 
 		<form action="nuevoPost.php" method="POST">
 			<input id="CrearPost" type="submit" value="Crear post" name="Crear post">
 		</form>
-		<form action="nuevoPost.php" method="POST">
+		<form action="logout.php" method="POST">
 			<input id="Logout" type="submit" value="Logout" name="Logout">
 		</form>
 	<?php
@@ -109,6 +107,13 @@ if (isset($_SESSION["listaArticulos"])) {
 
 	</section>
 	<script>
+
+		if(readCookie("usuario")==null){
+		document.getElementsByClassName("btn-link").disabled=true;
+		}else{
+		document.getElementsByClassName("btn-link").disabled=false;
+		}
+		
 		function validarInicio() {
 			var usuario = document.getElementById("usuario").value;
 			var passwd = document.getElementById("password").value;
@@ -123,6 +128,25 @@ if (isset($_SESSION["listaArticulos"])) {
 		function ocultarAside(){
 			document.getElementById("aside").style.visibility="hidden";
 		}
+
+		function readCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+
+
 	</script>
 
 	<footer>

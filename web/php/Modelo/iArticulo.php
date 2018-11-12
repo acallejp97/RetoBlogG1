@@ -9,5 +9,5 @@ interface iArticulo
     administrador*/
     public function update($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo); /*Actualiza el contenido del articulo (solo el autor o
     el administrador)*/
-    public function insert($fecha, $texto, $idAutor, $valoracion, $categoria, $publicado);
+    public function insert($fecha, $texto, $idAutor, $valoracion, $categoria, $publicado, $titulo);
 }

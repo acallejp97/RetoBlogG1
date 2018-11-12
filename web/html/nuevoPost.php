@@ -16,12 +16,12 @@ session_start();
 <body>
     <section class="text-left">
         <h1>Nuevo Post</h1>
-        <form action="" method="POST">
+        <form action="subiendoPost.php" method="POST">
             Titulo : <input type="text" name="titulo" />
             <br><br>
-            Texto : <textarea name="Texto" name="texto" cols="55" rows="10"></textarea>
+            Texto : <textarea name="texto" name="texto" cols="55" rows="10"></textarea>
             <br><br>
-            Publicado : <input type="checkbox" name="Publicado" />
+            Publicado : <input type="checkbox" name="publicado" />
             <br><br>
             <input type="submit" value="Enviar" name="Enviar">
             <input type="reset" value="Limpiar" name="Limpiar">
@@ -30,10 +30,7 @@ session_start();
 
     <footer>
         <a href="about.html">About</a>
-<<<<<<< HEAD:web/html/nuevoPost.php
         <br>
-=======
->>>>>>> 0efe5ede036322cd272ea553c735fcc76bab2001:web/html/nuevoPost.php
         <a href="index1.php">Volver al inicio</a>
     </footer>
 </body>

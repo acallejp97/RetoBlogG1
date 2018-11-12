@@ -47,12 +47,9 @@ if (!isset($_SESSION["usuario"])) {
 } else {
     ?>
 
-<<<<<<< HEAD
 		<form action="index1.php" method="POST">
 			<input type="submit" value="Cerrar Sesion" name="Cerrar Sesion">
 		</form>
-=======
->>>>>>> 0efe5ede036322cd272ea553c735fcc76bab2001
 
 		<form action="nuevoPost.php" method="POST">
             <input id="CrearPost" type="submit" value="Crear post" name="Crear post">
