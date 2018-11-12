@@ -1,3 +1,14 @@
+<?php
+$id_articulo = $_POST["id_post"];
+
+define('RAIZ_APLICACION', dirname(__FILE__));
+include_once RAIZ_APLICACION . '/../php/Modelo/ArticuloDAO.php';
+include_once RAIZ_APLICACION . '/../php/Vista/Vista.php';
+
+$articuloDAO = new articuloDAO();
+$vista = new Vista();
+
+?>
 <!DOCTYPE html>
 <html lang="">
 
@@ -10,22 +21,51 @@
 </head>
 
 <body>
-    <header>
-        <form action="nose.php" method="POST">
-            Usuario : <input type="text" id="usuario" />
-            Password : <input type="Password" id="password" />
-            <input type="submit" value="Loguear" name="Loguear">
+</article>
+	<?php
+if (isset($_SESSION["usuario"])) {
+    $usuario = $_SESSION["usuario"];
+    //echo $usuario["idUsuario"] . " " . $usuario["nombre"];
+}
+
+if (isset($_SESSION["listaArticulos"])) {
+    echo "Hay lista de articulos";
+}
+
+?>
+	<header id="initSesion">
+
+    <?php
+if (!isset($_SESSION["usuario"])) {
+    ?>
+
+            <form action="IniciarSesion.php" method="post">
+			<label>Usuario :</label> <input type="text" name="usuario" />
+			<label>Password :</label> <input type="password" name="password" />
+			<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
         </form>
-        <form action="registro.html" method="POST">
-            <input type="submit" value="Registrarse" name="Registrarse">
-        </form>
+
+    <form action="registro.php" method="POST">
+        <input type="submit" value="Registrarse" name="Registrarse">
+    </form>
+        <?php
+} else {
+    ?>
+
+
+		<form action="nuevoPost.php" method="POST">
+            <input id="CrearPost" type="submit" value="Crear post" name="Crear post">
+		</form>
+    <?php
+}
+?>
     </header>
-    <section>
-        <label id="TituloPost">asfas</label>
-        <br>
-        <label id="FechaPost">asfasf</label>
-        <br>
-        <p id="ContenidoPost">asfasfasfsf</p>
+
+    <section class="text-left">
+    <?php
+
+echo $vista->mostrarUnicoArticulo($id_articulo);
+?>
         <form action="nose.php" method="POST">
             Texto <textarea name="ComentarioPost" id="ComentarioPost" cols="30" rows="10"></textarea>
             <br><br>
@@ -38,6 +78,19 @@
     <footer>
         <a href="index.html">Volver al inicio</a>
     </footer>
+    <script>
+		document.getElementById("CrearPost").style.visibility = "hidden";
+		function validarInicio() {
+			var usuario = document.getElementById("usuario").value;
+			var passwd = document.getElementById("password").value;
+
+			if (passwd == "?" && usuario == "?") {
+				return true;
+			} else {
+				return console.log(false);
+			}
+		}
+	</script>
 </body>
 
 </html>

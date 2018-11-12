@@ -1,11 +1,11 @@
 <?php
 session_start();
 include_once RAIZ_APLICACION . '/../php/Controlador/ArticuloControler.php';
+
 $titulo=$_SESSION["titulo"];
 $texto=$_SESSION["texto"];
 $fecha=$_SESSION["fecha"];
-if(isset($_SESSION["publicado"])
-{
+if(isset($_SESSION["publicado"])){
 	$publicado=true;
 }
 else
