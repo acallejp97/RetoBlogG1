@@ -13,6 +13,7 @@ class Vista
     {
         $this->salida = "";
     }
+    /*Esta función crea un string que luego utilizaremos en index1.php para mostrar una lista de articulos que consigua (todos los articulos o los que filtremos por la fecha) junto con los comentarios asociados*/
     public function mostrarContenido($listadoArticulos)
     {
         $comentario = "";
@@ -48,7 +49,7 @@ class Vista
 
         return $this->salida;
     }
-
+  /*Busca los comentarios asociados a un articulo y crear un string que luego usaremos,por ejemplo, en el método anterior para mostrarlo en index.php*/
     public function mostrarComentarios($idArticulo)
     {
         $salida1 = "<h4>Comentarios</h4>";
