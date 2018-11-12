@@ -34,8 +34,7 @@ class Vista
             if ($articuloDto->getPublicado() == true) {
                 $this->salida = $this->salida . "<article><form action=\"../html/verPost.php\" method=\"post\">";
                 $var = "<h3> <button type=\"submit\" value=\"titulo\" name=\"titulo\" class=\"btn-link\" ";
-                //No funciona y no entiendo por que. Es la mejor manera que he visto, he probado con JS, pero tampoco. Si veis que no podeis arreglarlo dejarlo en enabled
-                if (!isset($_COOKIE["usuario"])) {
+                if (!isset($_SESSION["usuario"])) {
                     $var = $var . "disabled";
                 }
                 $this->salida = $this->salida . $var . " > " . $articuloDto->getTitulo() . " </button></h3>";

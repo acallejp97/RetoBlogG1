@@ -107,13 +107,6 @@ if (isset($_SESSION["listaArticulos"])) {
 
 	</section>
 	<script>
-
-		if(readCookie("usuario")==null){
-		document.getElementsByClassName("btn-link").disabled=true;
-		}else{
-		document.getElementsByClassName("btn-link").disabled=false;
-		}
-		
 		function validarInicio() {
 			var usuario = document.getElementById("usuario").value;
 			var passwd = document.getElementById("password").value;
@@ -128,25 +121,6 @@ if (isset($_SESSION["listaArticulos"])) {
 		function ocultarAside(){
 			document.getElementById("aside").style.visibility="hidden";
 		}
-
-		function readCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-
-
 	</script>
 
 	<footer>
