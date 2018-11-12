@@ -21,7 +21,7 @@ session_start();
             <br><br>
             Texto : <textarea name="texto" name="texto" cols="55" rows="10"></textarea>
             <br><br>
-            Publicado : <input type="checkbox" name="publicado" />
+            Publicado : <input type="checkbox" name="publicado" value="marcado"/>
             <br><br>
             <input type="submit" value="Enviar" name="Enviar">
             <input type="reset" value="Limpiar" name="Limpiar">

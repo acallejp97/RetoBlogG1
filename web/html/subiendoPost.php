@@ -8,6 +8,9 @@ include RAIZ_APLICACION . "/../php/Controlador/ArticuloControler.php";
 $titulo = $_POST["titulo"];
 $texto = $_POST["texto"];
 $publicado = $_POST["publicado"];
+if($publicado=='marcado'){
+    $publicado=3;
+}
 $date = date('Y/m/d', time());
 
 $articuloDto = new articuloDTO();
