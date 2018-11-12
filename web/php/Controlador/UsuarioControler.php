@@ -38,7 +38,7 @@ class UsuarioController
         Conexion::cerrar();
         return $temp;
     }
-    /* Llama a la funcion select de la clase UsuarioDAO para buscar un usuario(si existe) guardado en la BD que intenta
+    /* Llama a la funcion selectLogin de la clase UsuarioDAO para buscar un usuario(si existe) guardado en la BD que intenta
     iniciar sesión. Devuelve un objeto usuarioDTO con todos los datos del usuario*/
     public function login($name, $pwd)
     {
@@ -46,10 +46,5 @@ class UsuarioController
         return $temp;
     }
 
-    public function buscarPorCorreo($email)
-    {
-        $listaUsuarios = $this->usuarioDao->selectByEMAIL($email);
-        return $listaUsuarios;
-    }
 
 }

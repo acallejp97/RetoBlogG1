@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="">
 
@@ -26,7 +30,10 @@
 
     <footer>
         <a href="about.html">About</a>
+<<<<<<< HEAD:web/html/nuevoPost.php
         <br>
+=======
+>>>>>>> 0efe5ede036322cd272ea553c735fcc76bab2001:web/html/nuevoPost.php
         <a href="index1.php">Volver al inicio</a>
     </footer>
 </body>

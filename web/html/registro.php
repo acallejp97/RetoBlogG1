@@ -5,7 +5,10 @@ session_start();
 
 <html lang="">
 <?php
+define('RAIZ_APLICACION', dirname(__FILE__));
+
 include RAIZ_APLICACION . "/../php/Controlador/UsuarioControler.php";
+
 $usuario = $_POST["usuario"];
 $email = $_POST["email"];
 $pwd = $_POST["password"];    

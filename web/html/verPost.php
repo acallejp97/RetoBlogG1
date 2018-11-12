@@ -34,24 +34,32 @@ if (isset($_SESSION["listaArticulos"])) {
 
 ?>
 	<header id="initSesion">
-        
+
     <?php
 if (!isset($_SESSION["usuario"])) {
     ?>
 
 
+    <form action="registro.php" method="POST">
+        <input type="submit" value="Registrarse" name="Registrarse">
+    </form>
         <?php
-}
-?>
+} else {
+    ?>
 
+<<<<<<< HEAD
 		<form action="index1.php" method="POST">
 			<input type="submit" value="Cerrar Sesion" name="Cerrar Sesion">
 		</form>
+=======
+>>>>>>> 0efe5ede036322cd272ea553c735fcc76bab2001
 
-		<form action="nuevoPost.html" method="POST">
-			<input id="CrearPost" type="submit" value="Crear post" name="Crear post">
+		<form action="nuevoPost.php" method="POST">
+            <input id="CrearPost" type="submit" value="Crear post" name="Crear post">
 		</form>
-
+    <?php
+}
+?>
     </header>
 
     <section class="text-left">

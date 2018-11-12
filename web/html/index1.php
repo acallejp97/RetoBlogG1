@@ -83,7 +83,7 @@ else
 		<form action="nuevoPost.php" method="POST">
 			<input id="CrearPost" type="submit" value="Crear post" name="Crear post">
 		</form>
-		<form action="nuevoPost.html" method="POST">
+		<form action="nuevoPost.php" method="POST">
 			<input id="Logout" type="submit" value="Logout" name="Logout">
 		</form>
 	<?php
