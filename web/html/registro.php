@@ -93,7 +93,7 @@ $pwd = $_POST["password"];
     </script>
 
     <footer>
-        <a href="index.html">Volver al inicio</a>
+        <a href="index1.php">Volver al inicio</a>
     </footer>
 </body>
 

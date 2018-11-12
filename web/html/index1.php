@@ -1,6 +1,7 @@
-	<?php
-session_start();
+<?php
+	session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="UTF-8">
 
@@ -33,7 +34,7 @@ if (isset($_SESSION)) {
 </head>
 
 <body>
-    <article>
+	<article>
         <aside id="aside" onload="ocultarAside();">
             <h1>Criterio de busqueda</h1>
             <p>
@@ -53,9 +54,9 @@ if (isset($_SESSION["usuario"])) {
 
 }
 
-if (isset($_SESSION["listaArticulos"])) {
+/*if (isset($_SESSION["listaArticulos"])) {
     echo "Hay lista de articulos";
-}
+}*/
 
 ?>
 	<header id="initSesion">
@@ -79,7 +80,7 @@ else
 
     ?>
 
-		<form action="nuevoPost.html" method="POST">
+		<form action="nuevoPost.php" method="POST">
 			<input id="CrearPost" type="submit" value="Crear post" name="Crear post">
 		</form>
 		<form action="nuevoPost.html" method="POST">

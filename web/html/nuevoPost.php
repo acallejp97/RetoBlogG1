@@ -11,6 +11,7 @@
 
 <body>
     <section class="text-left">
+        <h1>Nuevo Post</h1>
         <form action="" method="POST">
             Titulo : <input type="text" name="titulo" />
             <br><br>
@@ -25,7 +26,8 @@
 
     <footer>
         <a href="about.html">About</a>
-        <a href="index.html">Volver al inicio</a>
+        <br>
+        <a href="index1.php">Volver al inicio</a>
     </footer>
 </body>
 

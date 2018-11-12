@@ -39,18 +39,13 @@ if (isset($_SESSION["listaArticulos"])) {
 if (!isset($_SESSION["usuario"])) {
     ?>
 
-            <form action="IniciarSesion.php" method="post">
-			<label>Usuario :</label> <input type="text" name="usuario" />
-			<label>Password :</label> <input type="password" name="password" />
-			<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
-        </form>
 
         <?php
 }
 ?>
 
-		<form action="registro.php" method="POST">
-			<input type="submit" value="Registrarse" name="Registrarse">
+		<form action="index1.php" method="POST">
+			<input type="submit" value="Cerrar Sesion" name="Cerrar Sesion">
 		</form>
 
 		<form action="nuevoPost.html" method="POST">
@@ -74,7 +69,7 @@ echo $vista->mostrarUnicoArticulo($id_articulo);
 
 
     <footer>
-        <a href="index.html">Volver al inicio</a>
+        <a href="index1.php">Volver al inicio</a>
     </footer>
     <script>
 		document.getElementById("CrearPost").style.visibility = "hidden";

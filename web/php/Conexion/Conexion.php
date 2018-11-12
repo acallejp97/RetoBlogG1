@@ -1,4 +1,4 @@
-s<?php
+<?php
 class Conexion
 {
     private $db = "G1Blog";
