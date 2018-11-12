@@ -30,7 +30,7 @@ class ArticuloControler
         return $temp;
     }
 
-    public function actualizarArticulo($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo, $idOrder)
+    public function actualizarArticulo($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo)
     {
         $temp = $this->articuloDao->update($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo, $idOrder);
         return $temp;
