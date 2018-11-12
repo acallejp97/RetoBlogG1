@@ -61,7 +61,7 @@ if (!isset($_SESSION["usuario"])) {
 ?>
     </header>
 
-    <section>
+    <section class="text-left">
     <?php
 
 echo $vista->mostrarUnicoArticulo($id_articulo);

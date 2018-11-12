@@ -34,7 +34,7 @@ if (isset($_SESSION)) {
 
 <body>
     <article>
-        <aside>
+        <aside id="aside" onload="ocultarAside();">
             <h1>Criterio de busqueda</h1>
             <p>
                 <form action="BuscarCustom.php" method="POST">
@@ -69,7 +69,7 @@ if (!isset($_SESSION["usuario"])) {
 				<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
 			</form>
 
-		<form action="registro.phpl" method="POST">
+		<form action="registro.php" method="POST">
 			<input type="submit" value="Registrarse" name="Registrarse">
 		</form>
 			<?php
@@ -79,10 +79,10 @@ else
 
     ?>
 
-		<form action="nuevoPost.html" method="POST">
+		<form action="nuevoPost.php" method="POST">
 			<input id="CrearPost" type="submit" value="Crear post" name="Crear post">
 		</form>
-		<form action="nuevoPost.html" method="POST">
+		<form action="nuevoPost.php" method="POST">
 			<input id="Logout" type="submit" value="Logout" name="Logout">
 		</form>
 	<?php
@@ -118,7 +118,12 @@ if (isset($_SESSION["listaArticulos"])) {
 				return console.log(false);
 			}
 		}
+
+		function ocultarAside(){
+			document.getElementById("aside").style.visibility="hidden";
+		}
 	</script>
+
 	<footer>
 		<a href="about.html">About</a>
 	</footer>
