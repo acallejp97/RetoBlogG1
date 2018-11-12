@@ -5,16 +5,16 @@ include_once RAIZ_APLICACION . "/../php/Modelo/iArticulo.php";
 class ArticuloDAO implements iArticulo
 {
     private $sqlALL = "SELECT * FROM articulos ORDER BY fecha";
-    private $sqlByID = "SELECT * FROM articulos WHERE id=";
+    private $sqlByID = "SELECT * FROM articulos WHERE id = ";
     private $sqlUPDATE = "UPDATE articulos SET texto=?, valoracion=?, categoria=?, publicado=?, fecha=? WHERE id=?";
     private $sqlINSERT = "INSERT INTO articulos (fecha,texto,id_autor,valoracion,categoria,publicado) VALUES (?,?,?,?,?,?)";
     private $sqlDELETE = " DELETE FROM articulos WHERE id=?";
     private $sqlSELECTByDATE = "SELECT * FROM articulos WHERE fecha>=";
     private $sqlCUSTOM = "SELECT * FROM articulos WHERE 1=1";
-    
+
     public function trasformObjetcDto($articuloTemp1)
     {
-       
+
         $articulo = new articuloDTO();
         $articulo->setIdArticulo($articuloTemp1["id"]);
         $articulo->setTitulo($articuloTemp1["titulo"]);
@@ -27,7 +27,7 @@ class ArticuloDAO implements iArticulo
         return $articulo;
     }
     //Borra un articulo de la base de datos
-    public function delete($idArticulo, $idOrder)
+    public function delete($idArticulo)
     {
         //Mirar si el execute devuelve algo para luego lanzar aviso en la parte de la vista.
         $db = Conexion::getInstance();
@@ -45,8 +45,8 @@ class ArticuloDAO implements iArticulo
         $db = Conexion::getInstance();
         $listaArticulos = $db->query($this->sqlALL);
         while ($articuloTemp = $listaArticulos->fetch()) {
-           $articulo=$this->trasformObjetcDto($articuloTemp);
-           array_push($temp, $articulo);
+            $articulo = $this->trasformObjetcDto($articuloTemp);
+            array_push($temp, $articulo);
         }
         return $temp;
     }
@@ -63,21 +63,21 @@ class ArticuloDAO implements iArticulo
         $db = Conexion::getInstance();
         $listaArticulos = $db->query($this->sqlCUSTOM);
         while ($articuloTemp = $listaArticulos->fetch()) {
-            $articulo1=trasformObjetcDto($articuloTemp);
+            $articulo1 = trasformObjetcDto($articuloTemp);
             array_push($temp, $articulo1);
         }
-        return temp;
+        return $temp;
     }
 
     //Actualiza un registro de la base de datos
-    public function update($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo, $idOrder)
+    public function update($idArticulo, $fecha, $texto, $valoracion, $publicado, $titulo)
     {
         //Falta titulo y categoría.
         $db = Conexion::getInstance();
         $consulta = $db->prepare($this->sqlUPDATE);
         $consulta->bindParam(1, $texto);
         $consulta->bindParam(2, $valoracion);
-      //  $consulta->bindParam(3, $categoria);
+        //  $consulta->bindParam(3, $categoria);
         $consulta->bindParam(4, $publicado);
         $consulta->bindParam(5, $fecha);
         $consulta->bindParam(6, $idArticulo);
@@ -105,30 +105,31 @@ class ArticuloDAO implements iArticulo
     public function selectBYID($id)
     {
         $db = Conexion::getInstance();
-        
-        $listaUsuarios = $db->query($this->sqlByID . $id);
-        while ($aticuloTemp = $listaUsuarios->fetch()) {
-           $articulo=trasformObjetcDto($articuloTemp);
+
+        $listaPost = $db->query($this->sqlByID . $id);
+        while ($articuloTemp = $listaPost ->fetch()) {
+            $articulo = $this->trasformObjetcDto($articuloTemp);
         }
         return $articulo;
     }
     //Devuelve los articulos en función a la fecha de publicación
     public function selectByFecha($fecha)
     {
-        
+
         $temp = []; //Variable para guardar y devolver la lista de articulos que salga de la SELECT
         $db = Conexion::getInstance();
-        $this->sqlSELECTByDATE="SELECT * FROM articulos WHERE fecha>='$fecha'";
-        $listaArticulos=$db->query($this->sqlSELECTByDATE);
+        $this->sqlSELECTByDATE = "SELECT * FROM articulos WHERE fecha>='$fecha'";
+        $listaArticulos = $db->query($this->sqlSELECTByDATE);
         while ($articuloTemp = $listaArticulos->fetch()) {
-            $articulo=$this->trasformObjetcDto($articuloTemp);
+            $articulo = $this->trasformObjetcDto($articuloTemp);
             array_push($temp, $articulo);
         }
         return $temp;
     }
 
-    public function selectBY($nombre, $email, $fecha) {
-        
+    public function selectBY($nombre, $email, $fecha)
+    {
+
     }
 
 }
