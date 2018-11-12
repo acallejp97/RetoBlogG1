@@ -34,7 +34,7 @@ if (isset($_SESSION["listaArticulos"])) {
 
 ?>
 	<header id="initSesion">
-        
+
     <?php
 if (!isset($_SESSION["usuario"])) {
     ?>
@@ -45,18 +45,20 @@ if (!isset($_SESSION["usuario"])) {
 			<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
         </form>
 
+    <form action="registro.php" method="POST">
+        <input type="submit" value="Registrarse" name="Registrarse">
+    </form>
         <?php
+} else {
+    ?>
+
+
+		<form action="nuevoPost.php" method="POST">
+            <input id="CrearPost" type="submit" value="Crear post" name="Crear post">
+		</form>
+    <?php
 }
 ?>
-
-		<form action="registro.html" method="POST">
-			<input type="submit" value="Registrarse" name="Registrarse">
-		</form>
-
-		<form action="nuevoPost.html" method="POST">
-			<input id="CrearPost" type="submit" value="Crear post" name="Crear post">
-		</form>
-
     </header>
 
     <section>

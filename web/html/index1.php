@@ -69,7 +69,7 @@ if (!isset($_SESSION["usuario"])) {
 				<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
 			</form>
 
-		<form action="registro.html" method="POST">
+		<form action="registro.phpl" method="POST">
 			<input type="submit" value="Registrarse" name="Registrarse">
 		</form>
 			<?php
