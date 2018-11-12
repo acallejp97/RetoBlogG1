@@ -31,7 +31,7 @@ if (isset($_SESSION)) {
 
 <body>
     <article>
-        <aside>
+        <aside id="aside" onload ="ocultarAside()">
             <h1>Criterio de busqueda</h1>
             <p>
                 <form action="BuscarCustom.php" method="POST">
@@ -90,7 +90,12 @@ echo $vista->mostrarContenido();
 				return console.log(false);
 			}
 		}
+	function ocultarAside(){
+		document.getElementById("aside").disabled=true;
+	}
+
 	</script>
+
 	<footer>
 		<a href="about.html">About</a>
 	</footer>
