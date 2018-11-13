@@ -1,5 +1,5 @@
 <?php
-	session_start();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +34,6 @@ if (isset($_SESSION)) {
 </head>
 
 <body>
-
 	<article>
         <aside id="aside" onload="ocultarAside();">
             <h2>Criterio de busqueda</h2>
@@ -75,16 +74,14 @@ if (!isset($_SESSION["usuario"])) {
 			<input type="submit" value="Registrarse" name="Registrarse">
 		</form>
 			<?php
-} 
-else
-{
+} else {
 
     ?>
 
 		<form action="nuevoPost.php" method="POST">
 			<input id="CrearPost" type="submit" value="Crear post" name="Crear post">
 		</form>
-		<form action="nuevoPost.php" method="POST">
+		<form action="logout.php" method="POST">
 			<input id="Logout" type="submit" value="Logout" name="Logout">
 		</form>
 	<?php

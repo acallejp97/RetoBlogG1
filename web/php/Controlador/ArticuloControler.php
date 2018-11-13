@@ -16,10 +16,10 @@ class ArticuloControler
         return $temp;
     }
     /*Llama a la función insert de ArticuloDAO para guardar un nuevo comentario en la BD. Devuelve el número de registros insertados*/
-    public function guardarArticulo($fecha, $texto, $idAutor, $valoracion, $categoria, $publicado)
+    public function guardarArticulo($fecha, $texto, $idAutor, $valoracion, $categoria, $publicado, $titulo)
     {
 
-        $temp = $this->articuloDao->insert($fecha, $texto, $idAutor, $valoracion, $categoria, $publicado);
+        $temp = $this->articuloDao->insert($fecha, $texto, $idAutor, $valoracion, $categoria, $publicado, $titulo);
         return $temp;
     }
 

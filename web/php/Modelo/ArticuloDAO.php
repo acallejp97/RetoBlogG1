@@ -1,13 +1,14 @@
 <?php
 include_once RAIZ_APLICACION . "/../php/Controlador/articuloDTO.php";
 include_once RAIZ_APLICACION . "/../php/Modelo/iArticulo.php";
+include_once RAIZ_APLICACION . "/../php/Conexion/Conexion.php";
 
 class ArticuloDAO implements iArticulo
 {
     private $sqlALL = "SELECT * FROM articulos ORDER BY fecha";
     private $sqlByID = "SELECT * FROM articulos WHERE id = ";
     private $sqlUPDATE = "UPDATE articulos SET texto=?, valoracion=?, categoria=?, publicado=?, fecha=? WHERE id=?";
-    private $sqlINSERT = "INSERT INTO articulos (fecha,texto,id_autor,valoracion,categoria,publicado) VALUES (?,?,?,?,?,?)";
+    private $sqlINSERT = "INSERT INTO articulos (fecha,texto,id_autor,valoracion,categoria,publicado,titulo) VALUES (?,?,?,?,?,?,?)";
     private $sqlDELETE = " DELETE FROM articulos WHERE id=?";
     private $sqlSELECTByDATE = "SELECT * FROM articulos WHERE fecha>=";
     private $sqlCUSTOM = "SELECT * FROM articulos WHERE 1=1";
@@ -86,7 +87,7 @@ class ArticuloDAO implements iArticulo
     }
 
     //Guarda un registro de la base de datos
-    public function insert($fecha, $texto, $idAutor, $valoracion, $categoria, $publicado)
+    public function insert($fecha, $texto, $idAutor, $valoracion, $categoria, $publicado, $titulo)
     {
 
         $db = Conexion::getInstance();
@@ -97,6 +98,7 @@ class ArticuloDAO implements iArticulo
         $consulta->bindParam(4, $valoracion);
         $consulta->bindParam(5, $categoria);
         $consulta->bindParam(6, $publicado);
+        $consulta->bindParam(7, $titulo);
         $temp = $consulta->execute();
         return $temp;
     }
