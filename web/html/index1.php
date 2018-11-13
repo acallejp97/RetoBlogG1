@@ -50,8 +50,7 @@ if (isset($_SESSION)) {
 	<?php
 if (isset($_SESSION["usuario"])) {
     $usuario = $_SESSION["usuario"];
-    // echo $usuario["idUsuario"] . " " . $usuario["nombre"];
-
+	echo "Hola " . $usuario["nombre"];
 }
 
 /*if (isset($_SESSION["listaArticulos"])) {

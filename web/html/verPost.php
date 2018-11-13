@@ -64,8 +64,8 @@ if (!isset($_SESSION["usuario"])) {
 
 echo $vista->mostrarUnicoArticulo($id_articulo);
 ?>
-        <form action="nose.php" method="POST">
-            Texto <textarea name="ComentarioPost" id="ComentarioPost" cols="30" rows="10"></textarea>
+        <form action="CrearComentario.php" method="POST">
+            <label>Texto</label> <textarea name="ComentarioPost" id="ComentarioPost" cols="30" rows="10"></textarea>
             <br><br>
             <input type="submit" value="Enviar" name="Enviar">
             <input type="reset" value="Limpiar" name="Limpiar">
