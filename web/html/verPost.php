@@ -1,5 +1,8 @@
 <?php
+session_start();
 $id_articulo = $_POST["id_post"];
+$usuario = $_SESSION["usuario"];
+$id_usuario = $usuario["idUsuario"];
 
 define('RAIZ_APLICACION', dirname(__FILE__));
 include_once RAIZ_APLICACION . '/../php/Modelo/ArticuloDAO.php';
@@ -7,7 +10,6 @@ include_once RAIZ_APLICACION . '/../php/Vista/Vista.php';
 
 $articuloDAO = new articuloDAO();
 $vista = new Vista();
-
 ?>
 <!DOCTYPE html>
 <html lang="">
@@ -18,6 +20,22 @@ $vista = new Vista();
     <meta name="title" content="G1Blog">
     <title>G1Blog</title>
     <link rel="stylesheet" href="css/main.css">
+<script>
+function borrarPost(){
+    var idPost = document.getElementById('IdPost').value;
+    var idAutor=document.getElementById('IdEscritor').value;
+    if(idAutor==<?php echo $id_usuario ?>){
+
+        var msg = confirm("¿Seguro de que desea eliminar este post?");
+        if (msg) {
+            window.location = "BorrarArticulo.php?did="+idPost;
+        }
+    }else{
+        alert("Este no es tu post");
+    }
+    }
+
+</script>
 </head>
 
 <body>
@@ -35,28 +53,14 @@ if (isset($_SESSION["listaArticulos"])) {
 ?>
 	<header id="initSesion">
 
-    <?php
-if (!isset($_SESSION["usuario"])) {
-    ?>
-
-
-    <form action="registro.php" method="POST">
-        <input type="submit" value="Registrarse" name="Registrarse">
-    </form>
-        <?php
-} else {
-    ?>
-
 		<form action="index1.php" method="POST">
 			<input type="submit" value="Cerrar Sesion" name="Cerrar Sesion">
 		</form>
 
 		<form action="nuevoPost.php" method="POST">
             <input id="CrearPost" type="submit" value="Crear post" name="Crear post">
-		</form>
-    <?php
-}
-?>
+        </form>
+        <button id="borrarPost" value="borrarPost" onclick="borrarPost()">Borrar Post</button>
     </header>
 
     <section class="text-left">
@@ -67,30 +71,13 @@ echo $vista->mostrarUnicoArticulo($id_articulo);
         <form action="CrearComentario.php" method="POST">
             <label>Texto</label> <textarea name="ComentarioPost" id="ComentarioPost" cols="30" rows="10"></textarea>
             <br><br>
-            <input type="submit" value="Enviar" name="Enviar">
+            <input type="submit" value="Enviar" name="Enviar" >
             <input type="reset" value="Limpiar" name="Limpiar">
         </form>
     </section>
-
-
     <footer>
         <a href="index1.php">Volver al inicio</a>
-        <a href="#menu" class="up-button"><img src="img/menu-button.png"></a>
+        <a href="#menu" class="up-button"><img src="imagenes/menu-button.png"></a>
     </footer>
-    <script>
-		document.getElementById("CrearPost").style.visibility = "hidden";
-		function validarInicio() {
-			var usuario = document.getElementById("usuario").value;
-			var passwd = document.getElementById("password").value;
-
-			if (passwd == "?" && usuario == "?") {
-				return true;
-			} else {
-				return console.log(false);
-			}
-		}
-    </script>
-      <a href="#initSesion" class="up-button"><img src="img/menu-button.png"></a>
 </body>
-
 </html>

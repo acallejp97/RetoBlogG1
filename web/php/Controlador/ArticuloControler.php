@@ -27,7 +27,7 @@ class ArticuloControler
     public function borrarArticulo($idArticulo)
     {
 
-        $temp = $this->articuloDao->delete($idArticulo, $idOrder);
+        $temp = $this->articuloDao->delete($idArticulo);
         return $temp;
     }
     /*Llama a la function update de ArticuloDAO para actualizar un articulo. Devuevlve el número de filas actualizadas*/

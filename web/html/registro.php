@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 
 <html lang="">
@@ -8,10 +5,6 @@ session_start();
 define('RAIZ_APLICACION', dirname(__FILE__));
 
 include RAIZ_APLICACION . "/../php/Controlador/UsuarioControler.php";
-
-$usuario = $_POST["usuario"];
-$email = $_POST["email"];
-$pwd = $_POST["password"];    
 
 ?>
 <head>
@@ -33,7 +26,7 @@ $pwd = $_POST["password"];
             <br><br>
             Repetir contraseña : <input type="password" id="confirmarpassword" />
             <br><br>
-            <input type="button" value="Crear usuario" onclick="onClickPulsado()" name="Crear usuario">
+            <input type="submit" value="Crear usuario" onclick="onClickPulsado()" name="Crear usuario">
         </form>
     </section>
     <script>
@@ -49,12 +42,12 @@ $pwd = $_POST["password"];
         }
 
         //Validacion Correo Creado
-        function validarCreacion(arrayCorreos) {
+        function validarCreacion(arrayCorreos, correoIntroducido) {
             var existe = false;
             arrayCorreos.forEach(function (correo) {
                 if (
                     correo.toUpperCase() ==
-                    document.getElementById("email").value.toUpperCase()
+                    correoIntroducido.value.toUpperCase()
                 )
                     existe = true;
             });
@@ -62,35 +55,45 @@ $pwd = $_POST["password"];
         }
 
         //Validacion contraseña
-        function validarPasswd() {
+        function validarPasswd(password) {
             var expReg = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
-            if (expReg.test(document.getElementById("password").value)) {
+            if (expReg.test(password)) {
                 return true;
             } else {
-                alert(
-                    "Por favor introduzca una contraseña que contenga mayuscula, minscula y un numero"
-                );
+                alert("Por favor introduzca una contraseña que contenga mayuscula, minscula y un numero");
                 return false;
             }
         }
 
-        function validarPasswdIguales() {
-            var passwd1 = document.getElementById("password").value;
-            var passwd2 = document.getElementById("confirmarpassword").value;
-            if (passwd1 == passwd2) return true;
-            else return false;
+        function validarPasswdIguales(passwd1, passwd2) {
+            if (passwd1 == passwd2){
+                return true;
+            }
+            else{
+                alert("Las contraseñas no coinciden, por favor, reviselas")
+                return false;
+            }
+
         }
 
         //todo añadirlo al onclick
         function onClickPulsado() {
-            if (
-                validarPasswd() ||
-                validarCorreo() ||
-                validarCreacion() ||
-                validarPasswdIguales()
-            )
-                return true;
-            else return false;
+            var usuario = document.getElementById('usuario').value;
+            var correo = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var confirmarpassword= document.getElementById('confirmarpassword').value;
+
+            if (validarCorreo(correo) ||
+                validarPasswd(password) ||
+                //validarCreacion(correo) ||
+                validarPasswdIguales(password, confirmarpassword)){
+localStorage.setItem('usuario',usuario);                
+localStorage.setItem('correo',correo);                
+localStorage.setItem('password',password);                
+localStorage.setItem('permission',0);                
+                }else{
+                    alert("Por favor, revise los campos");
+                }
         }
 
     </script>

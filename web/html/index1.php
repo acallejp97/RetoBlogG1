@@ -50,11 +50,11 @@ if (isset($_SESSION)) {
 	<?php
 if (isset($_SESSION["usuario"])) {
     $usuario = $_SESSION["usuario"];
-	echo "Hola " . $usuario["nombre"];
+    echo "Hola " . $usuario["nombre"];
 }
 
 /*if (isset($_SESSION["listaArticulos"])) {
-    echo "Hay lista de articulos";
+echo "Hay lista de articulos";
 }*/
 
 ?>
@@ -105,23 +105,7 @@ if (isset($_SESSION["listaArticulos"])) {
 ?>
 
 	</section>
-	<script>
-		function validarInicio() {
-			var usuario = document.getElementById("usuario").value;
-			var passwd = document.getElementById("password").value;
 
-			if (passwd == "?" && usuario == "?") {
-				return true;
-			} else {
-				return console.log(false);
-			}
-		}
-
-		function ocultarAside(){
-			document.getElementById("aside").style.visibility="hidden";
-		}
-	</script>
-  
 	<footer>
 	<a href="#aside" class="up-button"><img src="imagenes/menu-button.png"></a>
 		<a href="about.html">About</a>

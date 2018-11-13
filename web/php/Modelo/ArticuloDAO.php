@@ -9,7 +9,7 @@ class ArticuloDAO implements iArticulo
     private $sqlByID = "SELECT * FROM articulos WHERE id = ";
     private $sqlUPDATE = "UPDATE articulos SET texto=?, valoracion=?, categoria=?, publicado=?, fecha=? WHERE id=?";
     private $sqlINSERT = "INSERT INTO articulos (fecha,texto,id_autor,valoracion,categoria,publicado,titulo) VALUES (?,?,?,?,?,?,?)";
-    private $sqlDELETE = " DELETE FROM articulos WHERE id=?";
+    private $sqlDELETE = " DELETE FROM articulos WHERE id = ?";
     private $sqlSELECTByDATE = "SELECT * FROM articulos WHERE fecha>=";
     private $sqlCUSTOM = "SELECT * FROM articulos WHERE 1=1";
 
