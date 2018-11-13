@@ -1,6 +1,7 @@
-	<?php
-session_start();
+<?php
+	session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="UTF-8">
 
@@ -8,7 +9,7 @@ session_start();
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="title" content="G1Blog">
-	<title>G1Blog</title>
+	<title>Mundo Deporte</title>
 	<link rel="stylesheet" href="css/main.css">
 	<?php
 define('RAIZ_APLICACION', dirname(__FILE__));
@@ -33,9 +34,10 @@ if (isset($_SESSION)) {
 </head>
 
 <body>
-    <article>
+
+	<article>
         <aside id="aside" onload="ocultarAside();">
-            <h1>Criterio de busqueda</h1>
+            <h2>Criterio de busqueda</h2>
             <p>
                 <form action="BuscarCustom.php" method="POST">
                     <label>Fecha<label><input type="date" name="fecha" />
@@ -53,9 +55,9 @@ if (isset($_SESSION["usuario"])) {
 
 }
 
-if (isset($_SESSION["listaArticulos"])) {
+/*if (isset($_SESSION["listaArticulos"])) {
     echo "Hay lista de articulos";
-}
+}*/
 
 ?>
 	<header id="initSesion">
@@ -89,7 +91,7 @@ else
 }
 ?>
 	</header>
-
+	<h1> Mundo Deporte</h1>
 	<section>
 		<?php
 $listadoArticulos = [];
@@ -123,8 +125,9 @@ if (isset($_SESSION["listaArticulos"])) {
 			document.getElementById("aside").style.visibility="hidden";
 		}
 	</script>
-
+  
 	<footer>
+	<a href="#aside" class="up-button"><img src="imagenes/menu-button.png"></a>
 		<a href="about.html">About</a>
 	</footer>
 </body>

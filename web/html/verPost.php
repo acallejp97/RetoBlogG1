@@ -39,11 +39,6 @@ if (isset($_SESSION["listaArticulos"])) {
 if (!isset($_SESSION["usuario"])) {
     ?>
 
-            <form action="IniciarSesion.php" method="post">
-			<label>Usuario :</label> <input type="text" name="usuario" />
-			<label>Password :</label> <input type="password" name="password" />
-			<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
-        </form>
 
     <form action="registro.php" method="POST">
         <input type="submit" value="Registrarse" name="Registrarse">
@@ -52,6 +47,9 @@ if (!isset($_SESSION["usuario"])) {
 } else {
     ?>
 
+		<form action="index1.php" method="POST">
+			<input type="submit" value="Cerrar Sesion" name="Cerrar Sesion">
+		</form>
 
 		<form action="nuevoPost.php" method="POST">
             <input id="CrearPost" type="submit" value="Crear post" name="Crear post">
@@ -76,7 +74,8 @@ echo $vista->mostrarUnicoArticulo($id_articulo);
 
 
     <footer>
-        <a href="index.html">Volver al inicio</a>
+        <a href="index1.php">Volver al inicio</a>
+        <a href="#menu" class="up-button"><img src="img/menu-button.png"></a>
     </footer>
     <script>
 		document.getElementById("CrearPost").style.visibility = "hidden";
@@ -90,7 +89,8 @@ echo $vista->mostrarUnicoArticulo($id_articulo);
 				return console.log(false);
 			}
 		}
-	</script>
+    </script>
+      <a href="#initSesion" class="up-button"><img src="img/menu-button.png"></a>
 </body>
 
 </html>
