@@ -34,24 +34,32 @@ if (isset($_SESSION["listaArticulos"])) {
 
 ?>
 	<header id="initSesion">
-            <form action="IniciarSesion.php" method="post">
 
-			<label>Usuario :</label> <input type="text" name="usuario" />
-			<label>Password :</label> <input type="password" name="password" />
-			<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
+    <?php
+if (!isset($_SESSION["usuario"])) {
+    ?>
+
+
+    <form action="registro.php" method="POST">
+        <input type="submit" value="Registrarse" name="Registrarse">
+    </form>
+        <?php
+} else {
+    ?>
+
+		<form action="index1.php" method="POST">
+			<input type="submit" value="Cerrar Sesion" name="Cerrar Sesion">
 		</form>
 
-		<form action="registro.html" method="POST">
-			<input type="submit" value="Registrarse" name="Registrarse">
+		<form action="nuevoPost.php" method="POST">
+            <input id="CrearPost" type="submit" value="Crear post" name="Crear post">
 		</form>
-
-		<form action="nuevoPost.html" method="POST">
-			<input id="CrearPost" type="submit" value="Crear post" name="Crear post">
-		</form>
-
+    <?php
+}
+?>
     </header>
 
-    <section>
+    <section class="text-left">
     <?php
 
 echo $vista->mostrarUnicoArticulo($id_articulo);
@@ -66,8 +74,21 @@ echo $vista->mostrarUnicoArticulo($id_articulo);
 
 
     <footer>
-        <a href="index.html">Volver al inicio</a>
+        <a href="index1.php">Volver al inicio</a>
     </footer>
+    <script>
+		document.getElementById("CrearPost").style.visibility = "hidden";
+		function validarInicio() {
+			var usuario = document.getElementById("usuario").value;
+			var passwd = document.getElementById("password").value;
+
+			if (passwd == "?" && usuario == "?") {
+				return true;
+			} else {
+				return console.log(false);
+			}
+		}
+	</script>
 </body>
 
 </html>

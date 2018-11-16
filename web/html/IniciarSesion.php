@@ -12,4 +12,4 @@ $usuarioDto = new usuarioDTO();
 $usuarioControl = new UsuarioController();
 $usuarioDto = $usuarioControl->login($usuario, $pwd);
 $_SESSION["usuario"] = $usuarioDto;
-header("Location: http://localhost/Proyectos/Clase/Retos/RetoBlogG1/web/html/index1.php");
+header("Refresh:0; url=index1.php");

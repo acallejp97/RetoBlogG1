@@ -1,6 +1,7 @@
-	<?php
+<?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="UTF-8">
 
@@ -33,8 +34,13 @@ if (isset($_SESSION)) {
 </head>
 
 <body>
+<<<<<<< HEAD
     <article>
         <aside id="aside" onload ="ocultarAside()">
+=======
+	<article>
+        <aside id="aside" onload="ocultarAside();">
+>>>>>>> 039806ac2e183061f69f9b25a428d60afd4547ab
             <h1>Criterio de busqueda</h1>
             <p>
                 <form action="BuscarCustom.php" method="POST">
@@ -49,30 +55,43 @@ if (isset($_SESSION)) {
 	<?php
 if (isset($_SESSION["usuario"])) {
     $usuario = $_SESSION["usuario"];
-    //echo $usuario["idUsuario"] . " " . $usuario["nombre"];
+    // echo $usuario["idUsuario"] . " " . $usuario["nombre"];
+
 }
 
-if (isset($_SESSION["listaArticulos"])) {
-    echo "Hay lista de articulos";
-}
+/*if (isset($_SESSION["listaArticulos"])) {
+echo "Hay lista de articulos";
+}*/
 
 ?>
 	<header id="initSesion">
-            <form action="IniciarSesion.php" method="post">
+			<?php
+if (!isset($_SESSION["usuario"])) {
+    ?>
+				<form action="IniciarSesion.php" method="post">
 
-			<label>Usuario :</label> <input type="text" name="usuario" />
-			<label>Password :</label> <input type="password" name="password" />
-			<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
-		</form>
+				<label>Usuario :</label> <input type="text" name="usuario" />
+				<label>Password :</label> <input type="password" name="password" />
+				<input type="submit" value="Loguear" onclick="validarInicio()" name="Loguear">
+			</form>
 
-		<form action="registro.html" method="POST">
+		<form action="registro.php" method="POST">
 			<input type="submit" value="Registrarse" name="Registrarse">
 		</form>
+			<?php
+} else {
 
-		<form action="nuevoPost.html" method="POST">
+    ?>
+
+		<form action="nuevoPost.php" method="POST">
 			<input id="CrearPost" type="submit" value="Crear post" name="Crear post">
 		</form>
-
+		<form action="logout.php" method="POST">
+			<input id="Logout" type="submit" value="Logout" name="Logout">
+		</form>
+	<?php
+}
+?>
 	</header>
 
 	<section>
@@ -93,7 +112,6 @@ if (isset($_SESSION["listaArticulos"])) {
 
 	</section>
 	<script>
-		document.getElementById("CrearPost").style.visibility = "hidden";
 		function validarInicio() {
 			var usuario = document.getElementById("usuario").value;
 			var passwd = document.getElementById("password").value;

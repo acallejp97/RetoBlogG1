@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="">
 
@@ -10,19 +14,14 @@
 </head>
 
 <body>
-    <section>
-        <form action="" method="POST">
+    <section class="text-left">
+        <h1>Nuevo Post</h1>
+        <form action="subiendoPost.php" method="POST">
             Titulo : <input type="text" name="titulo" />
             <br><br>
-            Texto : <textarea name="Texto" name="texto" cols="30" rows="10"></textarea>
+            Texto : <textarea name="texto" name="texto" cols="55" rows="10"></textarea>
             <br><br>
-            Fotos : <input type="file" name="file" />
-            <br><br>
-            Hora : <input type="time" name="Hora" />
-            <br><br>
-            Publicado : <input type="checkbox" name="Publicado" />
-            <br><br>
-            Fecha Publicacion : <input type="date" name="fecha" />
+            Publicado : <input type="checkbox" name="publicado" value="marcado"/>
             <br><br>
             <input type="submit" value="Enviar" name="Enviar">
             <input type="reset" value="Limpiar" name="Limpiar">
@@ -31,7 +30,8 @@
 
     <footer>
         <a href="about.html">About</a>
-        <a href="index.html">Volver al inicio</a>
+        <br>
+        <a href="index1.php">Volver al inicio</a>
     </footer>
 </body>
 

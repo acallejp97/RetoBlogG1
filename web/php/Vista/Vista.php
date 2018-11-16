@@ -13,6 +13,7 @@ class Vista
     {
         $this->salida = "";
     }
+    /*Esta función crea un string que luego utilizaremos en index1.php para mostrar una lista de articulos que consigua (todos los articulos o los que filtremos por la fecha) junto con los comentarios asociados*/
     public function mostrarContenido($listadoArticulos)
     {
         $comentario = "";
@@ -32,7 +33,11 @@ class Vista
         foreach ($listaArticulos as $articuloDto) {
             if ($articuloDto->getPublicado() == true) {
                 $this->salida = $this->salida . "<article><form action=\"../html/verPost.php\" method=\"post\">";
-                $this->salida = $this->salida . "<h3> <button type=\"submit\" value=\"titulo\" name=\"titulo\" class=\"btn-link\">" . $articuloDto->getTitulo() . " </button></h3>";
+                $var = "<h3> <button type=\"submit\" value=\"titulo\" name=\"titulo\" class=\"btn-link\" ";
+                if (!isset($_SESSION["usuario"])) {
+                    $var = $var . "disabled";
+                }
+                $this->salida = $this->salida . $var . " > " . $articuloDto->getTitulo() . " </button></h3>";
                 $this->salida = $this->salida . "<input type=\"hidden\" name=\"id_post\" value=\"" . $articuloDto->getIdArticulo() . "\" />";
                 $this->salida = $this->salida . "<label name=\"fecha\">" . $articuloDto->getFecha() . "</><br>";
                 $this->salida = $this->salida . "<label name=\"texto\">" . $articuloDto->getTexto() . "</>";
