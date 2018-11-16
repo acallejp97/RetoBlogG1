@@ -9,7 +9,7 @@ session_start();
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="title" content="G1Blog">
-	<title>G1Blog</title>
+	<title>Mundo Deporte</title>
 	<link rel="stylesheet" href="css/main.css">
 	<?php
 define('RAIZ_APLICACION', dirname(__FILE__));
@@ -40,8 +40,12 @@ if (isset($_SESSION)) {
 =======
 	<article>
         <aside id="aside" onload="ocultarAside();">
+<<<<<<< HEAD
 >>>>>>> 039806ac2e183061f69f9b25a428d60afd4547ab
             <h1>Criterio de busqueda</h1>
+=======
+            <h2>Criterio de busqueda</h2>
+>>>>>>> 572456270d0f19fecdc3cb6f22380b6aa821ab44
             <p>
                 <form action="BuscarCustom.php" method="POST">
                     <label>Fecha<label><input type="date" name="fecha" />
@@ -55,8 +59,7 @@ if (isset($_SESSION)) {
 	<?php
 if (isset($_SESSION["usuario"])) {
     $usuario = $_SESSION["usuario"];
-    // echo $usuario["idUsuario"] . " " . $usuario["nombre"];
-
+    echo "Hola " . $usuario["nombre"];
 }
 
 /*if (isset($_SESSION["listaArticulos"])) {
@@ -93,7 +96,7 @@ if (!isset($_SESSION["usuario"])) {
 }
 ?>
 	</header>
-
+	<h1> Mundo Deporte</h1>
 	<section>
 		<?php
 $listadoArticulos = [];
@@ -111,6 +114,7 @@ if (isset($_SESSION["listaArticulos"])) {
 ?>
 
 	</section>
+<<<<<<< HEAD
 	<script>
 		function validarInicio() {
 			var usuario = document.getElementById("usuario").value;
@@ -127,8 +131,11 @@ if (isset($_SESSION["listaArticulos"])) {
 	}
 
 	</script>
+=======
+>>>>>>> 572456270d0f19fecdc3cb6f22380b6aa821ab44
 
 	<footer>
+	<a href="#aside" class="up-button"><img src="imagenes/menu-button.png"></a>
 		<a href="about.html">About</a>
 	</footer>
 </body>

@@ -30,6 +30,7 @@ session_start();
 
     <footer>
         <a href="about.html">About</a>
+        <a href="#menu" class="up-button"><img src="img/menu-button.png"></a>
         <br>
         <a href="index1.php">Volver al inicio</a>
     </footer>

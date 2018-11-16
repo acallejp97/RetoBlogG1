@@ -62,6 +62,8 @@ class Vista
         $articuloDto = $articuloControlador->buscarArticuloPorId($idArticulo);
         if ($articuloDto->getPublicado() == true) {
             $this->salida = $this->salida . "<article> <h3 id=\"TituloPost\">" . $articuloDto->getTitulo() . "</h3><br/>";
+            $this->salida = $this->salida . "<input id=\"IdPost\" value=" . $articuloDto->getIdArticulo() . " hidden>";
+            $this->salida = $this->salida . "<input id=\"IdEscritor\" value=" . $articuloDto->getIdAutor() . " hidden>";
             $this->salida = $this->salida . "<label id=\"FechaPost\">" . $articuloDto->getFecha() . "</label><br/>";
             $this->salida = $this->salida . "<p id=\"ContenidoPost\">" . $articuloDto->getTexto() . "</p>";
             $comentario = $this->mostrarComentarios($articuloDto->getIdArticulo());

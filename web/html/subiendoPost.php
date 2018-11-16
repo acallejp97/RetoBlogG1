@@ -18,4 +18,4 @@ $articuloControl = new articuloControler();
 $articuloDto = $articuloControl->guardarArticulo($date, $texto, 1, 0, 1, $publicado, $titulo);
 $message = "Post añadido";
 echo "<script type='text/javascript'>alert('$message');</script>";
-header("Location: http://localhost/Proyectos/Clase/Retos/RetoBlogG1/web/html/index1.php");
+header("url=index1.php");

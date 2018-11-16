@@ -11,5 +11,11 @@ $pwd = $_POST["password"];
 $usuarioDto = new usuarioDTO();
 $usuarioControl = new UsuarioController();
 $usuarioDto = $usuarioControl->login($usuario, $pwd);
-$_SESSION["usuario"] = $usuarioDto;
+
+$usuario1["idUsuario"]=$usuarioDto->getIdUsuario();
+$usuario1["nombre"]=$usuarioDto->getNombre();
+$usuario1["pwd"]=$usuarioDto->getPwd();
+$usuario1["email"]=$usuarioDto->getEmail();
+$usuario1["permisos"]=$usuarioDto->getPermisos();
+$_SESSION["usuario"] = $usuario1;
 header("Refresh:0; url=index1.php");

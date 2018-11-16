@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-11-2018 a las 13:34:23
+-- Tiempo de generación: 13-11-2018 a las 17:28:30
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -134,7 +134,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `password`, `email`, `permisos`) VALUES
 (1, 'admin', 'admin', 'admin@gmail.com', 1),
-(2, 'Victor', 'es el mejor', 'beorn57@yahoo.es', 2);
+(2, 'Victor', 'es el mejor', 'beorn57@yahoo.es', 0);
 
 --
 -- Índices para tablas volcadas
@@ -176,7 +176,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `articulos`
 --
 ALTER TABLE `articulos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -204,8 +204,7 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `articulos`
 --
 ALTER TABLE `articulos`
-  ADD CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`categoria`) REFERENCES `categorias` (`id`),
-  ADD CONSTRAINT `usuario_autor` FOREIGN KEY (`id_autor`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `usuario_autor` FOREIGN KEY (`id_autor`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `comentarios`

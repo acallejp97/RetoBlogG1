@@ -1,10 +1,37 @@
 
 body {
   background-color: #FFFF;
-  background-image: url("../imagenes/deportes.jpg");
+  background-image: url("../imagenes/imagen2.png");
   background-repeat: no-repeat;
   background-position: right;
+  background-size: 33%;
  
+}
+
+h1{
+  color: #1c516b;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 0px;
+  text-decoration: underline;
+  font-size: 5em;
+}
+
+h2{
+  color: #1c516b;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 0px;
+  text-decoration: underline;
+  font-size: 2em;
 }
 
 section {
@@ -16,7 +43,7 @@ section {
   margin: auto;
   padding: 15px 0px;
   color: #1c516b;
- 
+  font-size: medium;
 }
 
 header form {
@@ -41,8 +68,21 @@ aside {
   color: #1c516b;
   padding: 0;
   font-family: inherit;
-  font-size: inherit;
+  font-size: 2.1em;
+}
+.up-button {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  display: inline-block;
+  max-width: 100%;
+  padding: 20px;
+  padding-bottom: 5px;
+
 }
 
-
+footer{
+ border: 1px solid  #1c516b;
+  text-align: center;
 }
+
